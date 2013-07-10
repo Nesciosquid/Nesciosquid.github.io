@@ -68,9 +68,8 @@
         </div>
       </div>
     </div>
-    <container>
-         <style> 
-
+      <!-- Styles -->
+   <style> 
       .hero-unit{
         background-repeat:no-repeat;
         background-position:right top;
@@ -79,8 +78,17 @@
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
       }
 
+
       .banner-phone{
-       background-image:url("./assets/img/wet_banner_phone.jpg");
+        background-image:url("./assets/img/wet_banner_phone.jpg");
+        background-repeat:no-repeat;
+        background-position:right top;
+        background-size: cover;
+        background-color: black;
+        color: white;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        margin: -20px -20px 30px -20px;
+        padding: 30px;
       }
 
       .banner-phone h1{
@@ -97,6 +105,12 @@
 
     </style>
 
+    <div class="visible-phone banner-phone">
+      <h1>Aaron Heuckroth</h1>
+      <p>Something about being a nerd goes here.</p>
+      <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>
+
     <div class="container">
       <!-- Main hero unit for a primary marketing message or call to action -->
 
@@ -106,14 +120,6 @@
         <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div>
 
-    <div class="row">
-      <div class="hero-unit visible-phone banner-phone">
-        <h1>Aaron Heuckroth</h1>
-        <p>Something about being a nerd goes here.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
-
-    <div class="row">
       <div class="hero-unit visible-tablet banner-tablet">
         <h1>Aaron Heuckroth</h1>
         <p>Something about being a nerd goes here.</p>
@@ -153,7 +159,6 @@
     <script src="./assets/js/bootstrap.min.js"></script>-->
 
 
-    </container>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   </body>
