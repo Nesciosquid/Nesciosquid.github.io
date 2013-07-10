@@ -2,22 +2,52 @@
 layout: default
 title: Jekyll Base
 ---
-    <style> 
+   <style> 
+
       .hero-unit{
-       background-image:url("./assets/img/aaron.jpg");
-       background-repeat:no-repeat;
-        background-size: 100%;
+        background-repeat:no-repeat;
+        background-position:right top;
+        background-size: cover;
         color: white;
-       text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      }
+
+      .banner-phone{
+       background-image:url("./assets/img/wet_banner_phone.jpg");
+      }
+
+      .banner-phone h1{
+        font-size:2.5em;
+      }
+
+      .banner-tablet{
+       background-image:url("./assets/img/wet_banner_tablet.jpg");
+      }
+
+      .banner-desktop{
+       background-image:url("./assets/img/wet_banner.jpg");
       }
 
     </style>
 
-
     <div class="container">
-
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+
+      <div class="hero-unit visible-desktop banner-desktop">
+        <h1>Aaron Heuckroth</h1>
+        <p>Something about being a nerd goes here.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+
+    <div class="row">
+      <div class="hero-unit visible-phone banner-phone">
+        <h1>Aaron Heuckroth</h1>
+        <p>Something about being a nerd goes here.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+
+    <div class="row">
+      <div class="hero-unit visible-tablet banner-tablet">
         <h1>Aaron Heuckroth</h1>
         <p>Something about being a nerd goes here.</p>
         <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
@@ -44,10 +74,9 @@ title: Jekyll Base
 
       <hr>
 
-      <footer>
+            <footer>
         <p>&copy; Aaron Heuckroth, 2013</p>
       </footer>
-
     </div> <!-- /container -->
 
     <!-- Le javascript
