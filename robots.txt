@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://Nesciosquid.github.io/sitemap.xml 
