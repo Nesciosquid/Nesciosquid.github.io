@@ -73,6 +73,7 @@
       .hero-unit{
         background-repeat:no-repeat;
         background-position:right top;
+        background-color: black;
         background-size: cover;
         color: white;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -80,11 +81,33 @@
         padding-bottom: 20px;
       }
 
+      .p-fist {
+        background-image:url("./assets/img/fist_banner_phone4.jpg");
+      }
+
+      .t-fist {
+       background-image:url("./assets/img/fist_banner_tablet4.jpg");
+      }
+
+      .d-fist{
+       background-image:url("./assets/img/fist_banner4.jpg");
+      }
+
+      .p-wet {
+        background-image:url("./assets/img/wet_banner_phone.jpg");
+      }
+
+      .t-wet {
+       background-image:url("./assets/img/wet_banner_tablet.jpg");
+      }
+
+      .d-wet{
+       background-image:url("./assets/img/wet_banner.jpg");
+      }        
 
       .banner-phone{
-        background-image:url("./assets/img/wet_banner_phone.jpg");
         background-repeat:no-repeat;
-        background-position:right top;
+        background-position:right-top;
         background-size: cover;
         background-color: black;
         color: white;
@@ -100,12 +123,7 @@
       .banner-phone h3{
         font-size: 1.5em;
         font-weight: lighter;
-        font-style: italic;
         line-height: 70%;
-      }
-
-      .banner-tablet{
-       background-image:url("./assets/img/wet_banner_tablet.jpg");
       }
 
       .banner-tablet h1{
@@ -115,17 +133,11 @@
       .banner-tablet h3{
         font-size: 1.5em;
         font-weight: lighter;
-        font-style: italic;
-      }
-
-      .banner-desktop{
-       background-image:url("./assets/img/wet_banner.jpg");
       }
 
       .banner-desktop h3{
         font-size: 1.5em;
         font-weight: lighter;
-        font-style: italic;
       }
       
       .banner-desktop h1{
@@ -138,9 +150,9 @@
 
     </style>
 
-    <div class="visible-phone banner-phone">
+    <div class="visible-phone banner-phone p-fist">
       <h1>Aaron Heuckroth</h1>
-      <h3>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</h3>
+      <h3><i>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</i></h3>
       <ol>
         <li>Synthetic Biologist; Bio-Geek</li>
         <li>Software Developer-in-Training</li>
@@ -151,9 +163,9 @@
     <div class="container">
       <!-- Main hero unit for a primary marketing message or call to action -->
 
-      <div class="hero-unit visible-desktop banner-desktop">
+      <div class="hero-unit visible-desktop banner-desktop d-fist">
       <h1>Aaron Heuckroth</h1>
-      <h3>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</h3>
+      <h3><i>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</i></h3>
       <ol>
         <li>Synthetic Biologist; Bio-Geek</li>
         <li>Software Developer-in-Training</li>
@@ -161,9 +173,9 @@
       </ol>
     </div>
 
-      <div class="hero-unit visible-tablet banner-tablet">
+      <div class="hero-unit visible-tablet banner-tablet t-fist">
       <h1>Aaron Heuckroth</h1>
-      <h3>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</h3>
+      <h3><i>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</i></h3>
       <ol>
         <li>Synthetic Biologist; Bio-Geek</li>
         <li>Software Developer-in-Training</li>
@@ -193,7 +205,7 @@
       <hr>
 
             <footer>
-        <p>&copy; Aaron Heuckroth, 2013</p>
+        <p>&copy; Aaron Heuckroth, 2013. Photos courtesy of <a href="http://www.benjaminlehman.com/">Benjamin Lehman Photography</a>.</p>
       </footer>
     </div> <!-- /container -->
 
