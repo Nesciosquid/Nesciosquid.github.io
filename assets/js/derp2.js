@@ -30,10 +30,7 @@ $(function(){
 	{
 		type = "wet";
 	}
-
-	alert(number + type);
-
-
+	
 	setSize(type);
 
 	$(window).resize(function() {
