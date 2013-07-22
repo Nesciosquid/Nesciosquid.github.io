@@ -2,5 +2,5 @@ auto: true
 markdown: rdiscount
 permalink: /:year/:month/:day/:title
 rdiscount extensions: [smart]
-paginate: 5
-paginate_path: "blog/page:num"
+paginate: 4
+paginate_path: "./blog/page_:num"
