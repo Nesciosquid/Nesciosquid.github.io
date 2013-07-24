@@ -1,42 +1,35 @@
 $(function(){
 
-	function setSize(style) {
-		var winwid = $(window).width();
-		var banner_class;
-		if (winwid > 980) {
-			banner_class = "d-" + style;
-			$('.heuck-banner').removeClass().addClass("heuck-banner hero-unit banner-desktop");
-			$('.heuck-banner').addClass(banner_class);
+	//Set main banner class in response to browser size, with background image partial class-string as imput.
+	function setSize(image) {
+		var window_width = $(window).width();
+		var target = $('#main-banner');		
+
+		if (window_width > 980) {
+			target.removeClass().addClass("hero-unit banner-desktop " + image.desktop);
 		}
 
-		if (winwid < 980 && winwid >= 768) {
-			banner_class = "t-" + style;
-			$('.heuck-banner').removeClass().addClass("heuck-banner hero-unit banner-tablet ");
-			$('.heuck-banner').addClass(banner_class);
+		if (window_width < 980 && window_width >= 768) {
+			target.removeClass().addClass("hero-unit banner-tablet " + image.tablet);
 		}
 
-		if (winwid < 768) {
-			banner_class = "p-" + style;
-			$('.heuck-banner').removeClass().addClass("heuck-banner banner-phone p-fist ");
-			$('.heuck-banner').addClass(banner_class);
+		if (window_width < 768) {
+			target.removeClass().addClass("banner-phone " + image.phone);
 		}
 	}
 
-	var type;
-	var number =Math.round(Math.random() * 1);
-	if (number == 0)
-	{
-		type = "fist";
-	}
+	//Retrieve array of image objects from #main-banner data.
+	var image_types = $('#main-banner').data('banners');
 
-	if (number == 1) 
-	{
-		type = "wet";
-	}
+	//Select a random image from the array to use 
+	var image_index =Math.round(Math.random() * (image_types.length - 1));
+	var banner_image = image_types[image_index];
 	
-	setSize(type);
+	//Determine proper class to apply to banner on page load.
+	setSize(banner_image);
 
+	//Re-determine banner class wwhen window is resized.
 	$(window).resize(function() {
-		setSize(type);
+		setSize(banner_image);
 	});
 });
