@@ -14,15 +14,41 @@
       body {
         padding-top: 60px;
         padding-bottom: 40px;
+        background-repeat: none;
       }
     </style>
 
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 
+    <style>
+
+    body {
+      background-color: #252528;
+      color: white;
+    }
+
+    .phone-bg{
+    background-image:url(/assets/img/phone_bg.jpg);
+    }
+
+   .tablet-bg{
+    background-image:url(/assets/img/tablet_bg.jpg);
+    }
+    .desktop-bg{
+    background-image:url(/assets/img/desktop_bg.jpg);
+    }
+
+    .navbar-fixed-top {
+    box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, .6);
+    }
+
+    </style>
+
     <!-- Javascript -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="/assets/js/background_response.js"></script>
 
     <!--<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">-->
 
@@ -34,9 +60,9 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
 
   </head>
 
@@ -74,31 +100,35 @@
       </div>
     </div>
 
-        <div class="container">
+    <style>
+
+.headshot{
+  border-radius: 10px;
+}
+
+</style>
+
+    <div class="container">
       <h1> This is where information about Aaron goes! </h1>
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Blog</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <div class="image">
+           <img src="/assets/img/aaron_headshot.jpg" class="headshot">
+         </div>
         </div>
-        <div class="span4">
-          <h2>About</h2>
+        <div class="span8">
+          <h2>This is a paragraph about Aaron.</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>          
           <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
-        <div class="span4">
-          <h2>Contact</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
       </div>
 
       <hr>
 
             <footer>
-        <p>&copy; Aaron Heuckroth, 2013. Photos courtesy of <a href="http://www.benjaminlehman.com/">Benjamin Lehman Photography</a>.</p>
+        <p>&copy; Aaron Heuckroth, 2013. Photo courtesy of <a href="http://ryan.norbauer.com/">Ryan Norbauer</a>.</p>
       </footer>
     </div> <!-- /container -->
 
