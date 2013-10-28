@@ -24,6 +24,24 @@ void setup(){
   frameRate(30);
 }
 
+void keyPressed() {
+
+  if (key == CODED) {
+
+    if (keyCode == UP) {
+
+      velocity += 1.0;
+
+    } else if (keyCode == DOWN) {
+
+      velocity -= 1.0;
+
+    } 
+
+  }
+}
+
+
 void mouseWheel(MouseEvent event) {
   float e = event.getAmount();
   velocity += -e;
