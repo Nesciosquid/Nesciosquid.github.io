@@ -91,16 +91,19 @@ void draw(){
     a.setVelocity(velocity);
     a.display();
     
-    readouts[0] = "Car Position: " + a.xpos;
-    readouts[1] = "Target Position: " + new_target;
-    readouts[2] = "Car theta: " + degrees(a.theta);
-    readouts[3] = "Target theta: " + degrees(new_theta);
-    readouts[4] = "Car Velocity: " + a.velocity;  
-    readouts[5] = "Car Turn Value: " + a.myTurn;
-    readouts[6] = "";
-    readouts[7] = "";
-    readouts[8] = "";
-    readouts[9] = "";
+    
+        readouts[0] = "Click and drag to set target position.";
+    readouts[1] = "";
+    readouts[2] = "Use up/down keys to change velocity.";
+        readouts[3] = "";
+    readouts[4] = "Car Position: " + a.xpos;
+    readouts[5] = "Target Position: " + new_target;
+    readouts[6] = "Car theta: " + degrees(a.theta);
+    readouts[7] = "Target theta: " + degrees(new_theta);
+    readouts[8] = "Car Velocity: " + a.velocity;  
+    readouts[9] = "Car Turn Value: " + a.myTurn;
+
+
     
       textFont(f,16);
       fill(255);
