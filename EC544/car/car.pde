@@ -16,15 +16,15 @@ int counter;
 }*/
 
 public void setup(){
-  size(displayWidth, displayHeight);
+  size(screenWidth, screenHeight);
   readouts = new String[10];
   f = createFont("Arial",16,true);
   background(255);
   smooth();
   velocity = 10;
-  a = new Car(displayWidth/2, displayHeight/2);
-  hall_left = (displayWidth / 4);
-  hall_right = displayWidth - (displayWidth / 4);
+  a = new Car(screenWidth/2, screenHeight/2);
+  hall_left = (screenWidth / 4);
+  hall_right = screenWidth - (screenWidth / 4);
   new_target = (hall_left + hall_right / 2);
   min_target = hall_left + a.totalWidth;
   max_target = hall_right - a.totalWidth;
@@ -124,15 +124,15 @@ b.display();
 }
 
 class Floor{
-  float yLimitUp = -(displayHeight*3);
-  float yLimitDown = -displayHeight;
-  float yReset = -(displayHeight *2);
-  float floorWidth = displayWidth;
-  float floorHeight = displayHeight * 5;
+  float yLimitUp = -(screenHeight*3);
+  float yLimitDown = -screenHeight;
+  float yReset = -(screenHeight *2);
+  float floorWidth = screenWidth;
+  float floorHeight = screenHeight * 5;
   float xdist = 100;
   float ydist = 100;
   float velocity = 0;
-  float xpos = displayWidth/8;
+  float xpos = screenWidth/8;
   float ypos =  yReset;
   int floorStroke = color(150);
   int floorWeight = 1;
