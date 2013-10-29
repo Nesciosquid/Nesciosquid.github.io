@@ -7,11 +7,12 @@
 <title>EC544 Challenge 1+2</title>
 <h1> Challenges 1+2: SunSPOT temperature data acquisition and presentation demo.</h1>
 <h2> EC544 Group 3, Fall 2013, Boston University.</h2><br><br>
+<div style="width: 1400px; height: 600px">
 <table><tr>
 	<td valign="top" rowspan="4"><div id="graphdiv2"
   style="width:800px; height:600px;"></div></td>
 <td valign="top" rowspan="4">&nbsp;&nbsp;</td>
-<td valign="top" style="width:600px;"><div id="labels"></div></td>
+<td valign="top" style="width:600px;"><div id="labels" style="height:40px"></div></td>
 </tr>
 <tr><td style="width: 400px"><span><h3><b>This chart is interactive!</b></h3>
 Mouse over to highlight individual values. Click and drag to zoom. Double-clicking will zoom you back out. Shift-drag will pan.<br>
@@ -20,8 +21,8 @@ The roll period for moving average calculation is set to 60 minutes by default. 
 Timestamps for each datapoint were reported by individual spots, which were not calibrated to a central timepoint, but times should be accurate to within a few minutes. (Good enough for government work.)<br><br></span></td></tr>
 <tr><td style="width: 400px"><span><h3><b>How is this graph made?</b></h3>
 Individual temperature readings are recorded into a log .csv. This is converted to a multiple-series .csv, containing one column for time values and a value column for each mote detected since data collection start. As more notes are added, the csv is reconstructed with more columns. (You can see this in the graph to the left, since the motes start transmitting data at different times.)<br><br>Live monitoring is possible by updating the .csv file on the webserver whenever changes are detected and updating the graph periodically using javascript.<br><br>This chart is plotted on this page using the <a href="http://www.dygraphs.com">dygraphs</a> charting library.</span><br><br></td></tr>
-</table><br><br>
-<a href=../>Back to Projects Index</a>
+</table></div><br><br>
+<a href=.>Back to Projects Index</a>
 
 <script type="text/javascript">
   g2 = new Dygraph(
