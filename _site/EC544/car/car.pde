@@ -13,6 +13,10 @@ String[] readouts;
 String[] data;
 int counter;
 
+/*static public void main(String args[]) {
+    PApplet.main("virtual_car");
+}*/
+
 public void incVelocity(){
     if (velocity < maxVelocity){
     velocity += velocityStep;
@@ -26,7 +30,7 @@ public void incVelocity(){
 
 public void setup(){
   //size(displayWidth, displayHeight);
-  size(screenWidth, screenHeight);
+  size(screenWidth, screenHeight); 
   readouts = new String[10];
   f = createFont("Arial",16,true);
   background(255);
@@ -191,7 +195,7 @@ class Floor{
        ypos = yReset + (ypos - yLimitUp);
     }
             else if (ypos >= yLimitDown){
-                ypos = yReset + (yLimitDown - ypos);
+                ypos = yReset + (ypos - yLimitDown);
             }
       
       //xpos += sin(theta) * velocity;
@@ -228,13 +232,16 @@ class IRSensor{
   int mediumColor = color(255,243,3,125);
   int badColor = color(255,184,3,100);
   int reallyBadColor = color(232,0,0,50);
+  int noColor = color(0,0,0,0);
   int sensorStroke = color(255);
   int sensorColor = color(0);
+  PFont f;
   
   IRSensor(float newX, float newY, float newTheta){
     xpos = newX;
     ypos = newY;
     theta = newTheta;
+    f = createFont("Arial",32,true);
   }
   
   
@@ -250,28 +257,42 @@ class IRSensor{
     return theta;
   }
   
-  void shootBeam(float value, int trust){
-    if (trust == 4){
-      stroke(goodColor);
-      fill(goodColor);
+  void writeRead(float read, int trust){
+      int textColor = calcColor(trust);
+      fill(textColor);
+          if (textColor == noColor){
+        noStroke();
+        noFill();
+    }
+      text(read,xpos,ypos);
+  }
+  
+  int calcColor(int trust){
+          if (trust == 4){
+      return goodColor;
     }
       else if (trust == 3){
-        stroke(mediumColor);
-        fill(mediumColor);
+        return mediumColor;
       }
         else if (trust == 2){
-          stroke(badColor);
-          fill(badColor);
+         return badColor;
         }
           else if(trust == 1){
-            stroke(reallyBadColor);
-            fill(reallyBadColor);
+              return reallyBadColor;
           }
             else {
-              noStroke();
-              noFill();
+              return noColor;
             }
-            strokeWeight(4);
+  }
+  
+  void shootBeam(float value, int trust){
+    int beamColor = calcColor(trust);
+    stroke(beamColor);
+    fill(beamColor);
+    if (beamColor == noColor){
+        noStroke();
+        noFill();
+    }
     line(0,0,value,0);
     strokeWeight(0);
     ellipseMode(CENTER);
@@ -656,7 +677,10 @@ public int calcTrust(float value){
         rotate(currentSensor.getTheta());
         currentSensor.shootBeam(reads[i], trusts[i]);
         currentSensor.display();
-        
+        popMatrix();
+        pushMatrix();
+        translate(currentSensor.getX(), currentSensor.getY());
+        currentSensor.writeRead(reads[i], trusts[i]);
         popMatrix();
       }
     }
