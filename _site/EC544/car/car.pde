@@ -1,6 +1,8 @@
 Car a;
 Floor b;
 float velocity;
+float maxVelocity;
+float velocityStep;
 float min_target; 
 float new_target;
 PFont f;
@@ -11,18 +13,27 @@ String[] readouts;
 String[] data;
 int counter;
 
-/*static public void main(String args[]) {
-    PApplet.main("virtual_car");
-}*/
+public void incVelocity(){
+    if (velocity < maxVelocity){
+    velocity += velocityStep;
+}}
+    
+    public void decVelocity(){
+        if (velocity > -maxVelocity){
+            velocity -= velocityStep;
+        }
+    }
 
 public void setup(){
   //size(displayWidth, displayHeight);
-  size(screenWidth, screenHeight); 
+  size(screenWidth, screenHeight);
   readouts = new String[10];
   f = createFont("Arial",16,true);
   background(255);
   smooth();
   velocity = 10;
+  maxVelocity = 40;
+  velocityStep = 1.0f;
   a = new Car(width/2, height/2);
   hall_left = (width / 4);
   hall_right = width - (width / 4);
@@ -39,12 +50,10 @@ public void keyPressed() {
   if (key == CODED) {
 
     if (keyCode == UP) {
-
-      velocity += 1.0f;
+        incVelocity();
 
     } else if (keyCode == DOWN) {
-
-      velocity -= 1.0f;
+        decVelocity();
     } 
 
   }
@@ -53,7 +62,12 @@ public void keyPressed() {
 
 public void mouseWheel(MouseEvent event) {
   float e = event.getAmount();
-  velocity += -e;
+  if (e < 0){
+      incVelocity();
+}
+  else if (e > 0){
+      decVelocity();
+  }
 }
 
 public void draw(){
@@ -298,10 +312,10 @@ class WheelStripe{
     float min = minY + stripeWeight;
     ypos = ypos - velocity/5;
     if (ypos > max){
-      ypos = min;
+      ypos = min + (ypos-max);
     }
     else if (ypos < min){
-      ypos = max;
+      ypos = max + (ypos - min);
   }
   }
   
@@ -668,4 +682,6 @@ public int calcTrust(float value){
       popMatrix();
     }
 }
+
+
 
