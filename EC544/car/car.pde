@@ -143,8 +143,10 @@ class Floor{
   
   Floor(){
             horizontalRules = (floorHeight / ydist);
+      System.out.println("Horizontal rules: " + horizontalRules);
 
       verticalRules = (floorWidth / xdist);
+            System.out.println("Vertical rules: " + verticalRules);
   }
   
     float getTheta(){
