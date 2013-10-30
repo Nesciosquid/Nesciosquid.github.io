@@ -31,7 +31,7 @@ void setup(){
   defaultRadius = 150.0;
   innerWidth = width - inset;
   innterHeight = height-inset;
-  mOff = 30.0;
+  mOff = 50.0;
   mouseOffset = 0.0;
   f = createFont("Arial",32,true);
   background(255);
@@ -227,14 +227,15 @@ void draw(){
   a.setRadius(a.calcDistance(mouseX, mouseY)+mouseOffset);
   b.setRadius(b.calcDistance(mouseX, mouseY)+mouseOffset);
   c.setRadius(c.calcDistance(mouseX, mouseY)+mouseOffset);
-  d.setRadius(d.calcDistance(mouseX, mouseY)+mouseOffset);}
+  d.setRadius(d.calcDistance(mouseX, mouseY)+mouseOffset);
+}
   
   else{
   
-  a.setRadius(a.calcDistance(mouseX, mouseY)+random(mouseOffset));
-  b.setRadius(b.calcDistance(mouseX, mouseY)+random(mouseOffset));
-  c.setRadius(c.calcDistance(mouseX, mouseY)+random(mouseOffset));
-  d.setRadius(d.calcDistance(mouseX, mouseY)+random(mouseOffset));}
+  a.setRadius(a.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));
+  b.setRadius(b.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));
+  c.setRadius(c.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));
+  d.setRadius(d.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));}
   
     a.display();
   b.display();
