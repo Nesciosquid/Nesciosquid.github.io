@@ -204,7 +204,7 @@ void guess(Intersect[] ints){
   else {
       ellipse(average(Xguesses),average(Yguesses),25,25);
 }
-  text("Best 1/2 avg",average(Xguesses),average(Yguesses));
+  //text("Best 1/2 avg",average(Xguesses),average(Yguesses));
 }
 
 void draw(){
@@ -273,7 +273,7 @@ class Intersect{
     stroke(0);
     fill(0);
     textFont(f, 16);
-    text(myName, xpos+10, ypos-10);
+    //text(myName, xpos+10, ypos-10);
 }
   
   void display(){
@@ -283,7 +283,7 @@ class Intersect{
     stroke(0);
     fill(0);
     textFont(f, 16);
-    text(myName, xpos+10, ypos-10);
+    //text(myName, xpos+10, ypos-10);
 }
 }
 
