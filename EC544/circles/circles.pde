@@ -1,7 +1,3 @@
-Beacon a;
-Beacon b;
-Beacon c;
-Beacon d;
 boolean jitter;
 boolean offset_mouse;
 float inset;
@@ -9,24 +5,34 @@ float defaultRadius;
 float innerWidth;
 float innterHeight;
 PFont f;
+boolean wait;
 float mouseOffset;
 float[] Xguesses;
 float[] Yguesses;
 float[] Xstdevs;
+float mousePointX;
+float mousePointY;
 float[] Ystdevs;
+Beacon[] beacons;
 int guessCount;
 float mOff;
 
 void setup(){
+  wait = false;
+  beacons = new Beacon[4];
   jitter = false;
   offset_mouse = false;
-  //frameRate(1);
-  size(700,700);
-  Xguesses = new float[30];
-  Yguesses= new float[30];
-  Xstdevs= new float[30];
-  Ystdevs= new float[30];
-  guessCount = 0;
+  frameRate(60);
+  size(800,800);
+  int guesses = 30;
+  mousePointX = 0.0;
+  mousePointY = 0.0;
+  guessCount = 30;
+  Xguesses = new float[guesses];
+  Yguesses= new float[guesses];
+  Xstdevs= new float[guesses];
+  Ystdevs= new float[guesses];
+  
   inset = 200;
   defaultRadius = 150.0;
   innerWidth = width - inset;
@@ -37,11 +43,10 @@ void setup(){
   background(255);
   stroke(0);
   noFill();
-  a = new Beacon(inset, inset, "A");
-  b = new Beacon(innerWidth, inset, "B");
-  c = new Beacon(inset, innerWidth, "C");
-  d = new Beacon(innerWidth, innerWidth, "D");
-  a.display();
+  beacons[0] = new Beacon(inset, inset, "A");
+  beacons[1] = new Beacon(innerWidth, inset, "B");
+  beacons[2] = new Beacon(inset, innerWidth, "C");
+  beacons[3] = new Beacon(innerWidth, innerWidth, "D");
 }
 
 public float calcDistance(float x1, float y1, float x2, float y2){
@@ -53,13 +58,13 @@ public float calcDistance(float x1, float y1, float x2, float y2){
 }
 
 void rally(){
-  a.getIntersections(a,b);
-  a.getIntersections(a,c);
-  a.getIntersections(a,d);
-  a.getIntersections(b,c);
-  a.getIntersections(b,d);
-  a.getIntersections(c,d);
-  a.drawInts(a.myIntersections);
+  for (int i = 0; i < beacons.length; i++){
+    for (int j = i+1; j < beacons.length; j++){
+      beacons[0].getIntersections(beacons[i],beacons[j]);
+    }
+  }
+
+ beacons[0].drawInts(beacons[0].myIntersections);
 }
 
 void keyPressed() {
@@ -108,6 +113,17 @@ Intersect[] sort(Intersect[] oldInts, float avgx, float avgy){
     return ints;
 }
 
+void mousePressed() {
+  mousePointX = mouseX;
+  mousePointY = mouseY;
+  if (mouseButton == LEFT){
+   wait = false;
+  }
+ if (mouseButton == RIGHT){
+  wait = true;
+ } 
+}
+
 float average(float[] array){
   float sum  = 0.0;
   for (int i = 0; i<array.length; i++){
@@ -153,7 +169,7 @@ void guess(Intersect[] ints){
     xsum += better[i].xpos;
     ysum += better[i].ypos;
 }
-    xavg = xsum/(ints.length/2);
+  xavg = xsum/(ints.length/2);
   yavg = ysum/(ints.length/2);
   
   fill(0);
@@ -176,9 +192,9 @@ void guess(Intersect[] ints){
     else {
       best[i/2] = ints[i+1];
     }
+    
     bestXSum += best[i/2].xpos;
     bestXDevSum += Math.pow((best[i/2].xpos-xavg),2);
-
     bestYSum += best[i/2].ypos;
     best[i/2].display(color(255,0,0));
     bestYDevSum += Math.pow((best[i/2].ypos-yavg),2);
@@ -201,6 +217,8 @@ void guess(Intersect[] ints){
   if (jitter){
       fill(0,255,0,255);
   ellipse(average(Xguesses),average(Yguesses),stDev(Xguesses),stDev(Yguesses));}
+  //  ellipse(average(Xguesses),average(Yguesses),25,25);}
+
   else {
       ellipse(average(Xguesses),average(Yguesses),25,25);
 }
@@ -208,10 +226,11 @@ void guess(Intersect[] ints){
 }
 
 void draw(){
-  if (guessCount >= 30){
+  if (wait == false){
+  if (guessCount >= Xguesses.length){
     guessCount = 0;
   }
-  a.clearIntersections();
+  beacons[0].clearIntersections();
   background(255);
   noFill();
   stroke(0);
@@ -224,31 +243,38 @@ void draw(){
   }
   
   if (!jitter){
-  a.setRadius(a.calcDistance(mouseX, mouseY)+mouseOffset);
-  b.setRadius(b.calcDistance(mouseX, mouseY)+mouseOffset);
-  c.setRadius(c.calcDistance(mouseX, mouseY)+mouseOffset);
-  d.setRadius(d.calcDistance(mouseX, mouseY)+mouseOffset);
+    float newRadius = 0.0;
+  for (int i = 0; i < beacons.length; i++){
+    newRadius = beacons[i].calcDistance(mousePointX,mousePointY)+mouseOffset;
+    if (newRadius > 0){
+      beacons[i].setRadius(newRadius);}
+      else
+     { 
+      beacons[i].setRadius(0.0);
+  }
+  beacons[i].display();
 }
+  }
   
   else{
-  
-  a.setRadius(a.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));
-  b.setRadius(b.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));
-  c.setRadius(c.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));
-  d.setRadius(d.calcDistance(mouseX, mouseY)+random(-mouseOffset,mouseOffset));}
-  
-    a.display();
-  b.display();
-  c.display();
-  d.display();
-  if (mousePressed)
-  {
-  rally();
-  guess(a.myIntersections);
+        float newRadius = 0.0;
+  for (int i = 0; i < beacons.length; i++){
+    newRadius = beacons[i].calcDistance(mousePointX,mousePointY)+random(-mouseOffset, mouseOffset);
+    if (newRadius > 0){
+      beacons[i].setRadius(newRadius);}
+      else
+     { 
+      beacons[i].setRadius(0.0);
+      
+  }
+    beacons[i].display();
 }
+  }
+  rally();
+  guess(beacons[0].myIntersections);
   textFont(f, 32);
   fill(0);
-  //text(a.getDistance(a,b),width/2, inset/2);
+}
 }
 
 class Intersect{
@@ -302,15 +328,15 @@ class Beacon{
 
 public boolean isIntersecting(Beacon A, Beacon B){
   double D = getDistance(A,B);
-  if ((A.radius + B.radius) >= D){
-    return true;
+  if ((A.radius + B.radius) < D || D < Math.abs(A.radius - B.radius)){
+    return false;
   }
   else {
-  return false;
+  return true;
   }
   }
 
-public Intersect[] getIntersections(Beacon A, Beacon B){
+public void getIntersections(Beacon A, Beacon B){
   Intersect[] inters;
     float x1 = A.xpos;
   float x2 = B.xpos;
@@ -331,12 +357,8 @@ public Intersect[] getIntersections(Beacon A, Beacon B){
     inters = new Intersect[2];
     inters[0] = new Intersect(x4, y4, A.myName+B.myName+"1", (A.myName+B.myName));
     inters[1] = new Intersect(x5, y5, A.myName+B.myName+"2", (A.myName+B.myName));
-  }
-  else{
-    inters = new Intersect[0];
-  }
     myIntersections = storeIntersections(myIntersections, inters);
-    return inters;
+  }
 }
 
 public Intersect[] storeIntersections(Intersect[] existingInters, Intersect[] newInters){
