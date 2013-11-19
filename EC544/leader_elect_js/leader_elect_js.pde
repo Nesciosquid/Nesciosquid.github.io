@@ -411,7 +411,9 @@ class Node {
   }
 
   public boolean doIWin(String challengerAddress) {
-    if (myAddress.compareTo(challengerAddress) < 0) {
+    long myAdd = Long.parseLong(myAddress);
+    long chall = Long.parseLong(challengerAddress);
+    if (myAdd < chall) {
       //System.out.println(myAddress + " wins against " + challengerAddress);
       return true;
     }
