@@ -5,6 +5,10 @@ float defaultRadius;
 float innerWidth;
 float innterHeight;
 PFont f;
+public float targetX;
+public float targetY;
+public float targetXdev;
+public float targetYdev;
 boolean wait;
 float mouseOffset;
 float[] Xguesses;
@@ -13,26 +17,31 @@ float[] Xstdevs;
 float mousePointX;
 float mousePointY;
 float[] Ystdevs;
-Beacon[] beacons;
+public Beacon[] beacons;
 int guessCount;
 float mOff;
+public float[] reads;
+public static boolean isSimulating;
 
 void setup(){
+  isSimulating = false;
+  reads = new float[4];
   wait = false;
   beacons = new Beacon[4];
   jitter = false;
   offset_mouse = false;
   frameRate(60);
   size(800,800);
-  int guesses = 30;
+  int guesses = 5;
   mousePointX = 0.0;
   mousePointY = 0.0;
-  guessCount = 30;
+  guessCount = 0;
   Xguesses = new float[guesses];
   Yguesses= new float[guesses];
-  Xstdevs= new float[guesses];
-  Ystdevs= new float[guesses];
-  
+  targetX = 0.0f;
+  targetY = 0.0f;
+  targetXdev = 0.0f;
+  targetYdev = 0.0f;
   inset = 200;
   defaultRadius = 150.0;
   innerWidth = width - inset;
@@ -40,6 +49,7 @@ void setup(){
   mOff = 50.0;
   mouseOffset = 0.0;
   f = createFont("Arial",32,true);
+  textFont(f);
   background(255);
   stroke(0);
   noFill();
@@ -47,6 +57,19 @@ void setup(){
   beacons[1] = new Beacon(innerWidth, inset, "B");
   beacons[2] = new Beacon(inset, innerWidth, "C");
   beacons[3] = new Beacon(innerWidth, innerWidth, "D");
+}
+
+public static setReads(float[] newReads){
+  for (int i = 0; i < newReads.length; i++){
+    reads[i] = newReads[i];
+  }
+}
+
+public static setTarget(float[] newX, newY, newXDev, newYDev){
+  targetX = newX;
+  targetY = newY;
+  targetXdev = newXDev;
+  targetYdev = newYDev;
 }
 
 public float calcDistance(float x1, float y1, float x2, float y2){
@@ -57,7 +80,8 @@ public float calcDistance(float x1, float y1, float x2, float y2){
   return (float)Math.sqrt(ysq+xsq);
 }
 
-void rally(){
+void updateIntersections(){
+    beacons[0].clearIntersections();
   for (int i = 0; i < beacons.length; i++){
     for (int j = i+1; j < beacons.length; j++){
       beacons[0].getIntersections(beacons[i],beacons[j]);
@@ -113,6 +137,14 @@ Intersect[] sort(Intersect[] oldInts, float avgx, float avgy){
     return ints;
 }
 
+void updateBeacons(){
+  for (int i = 0; i < beacons.length; i++){
+    beacons[i].setRadius(reads[i]);
+  }
+  updateIntersections();
+  guess(beacons[0].myIntersections);
+}
+
 void mousePressed() {
   mousePointX = mouseX;
   mousePointY = mouseY;
@@ -125,7 +157,7 @@ void mousePressed() {
 }
 
 float average(float[] array){
-  float sum  = 0.0;
+  float sum  = 0.0f;
   for (int i = 0; i<array.length; i++){
     sum += array[i];
   }
@@ -134,12 +166,57 @@ float average(float[] array){
 
 float stDev(float[] array){
   float avg = average(array);
-  float sum = 0.0;
+  float sum = 0.0f;
   for (int i = 0; i < array.length; i ++){
     sum += Math.pow((array[i] - avg),2);
   }
   return (float)Math.sqrt(sum/array.length);
 }
+
+void displayBeacons(){
+  for (int i =0; i < beacons.length; i++){
+    beacons[i].display();
+  }
+}
+
+void simulate(){
+  if (offset_mouse){
+    mouseOffset = mOff;
+  }
+  else {
+    mouseOffset = 0.0f;
+  }
+  
+  if (!jitter){
+    float newRadius = 0.0f;
+  for (int i = 0; i < beacons.length; i++){
+    newRadius = beacons[i].calcDistance(mousePointX,mousePointY)+mouseOffset;
+    if (newRadius > 0){
+      reads[i] = newRadius;
+    }
+      else
+     { 
+      reads[i] = 0.0f;
+  }
+}  
+  }
+  
+  else{
+        float newRadius = 0.0;
+  for (int i = 0; i < beacons.length; i++){
+    newRadius = beacons[i].calcDistance(mousePointX,mousePointY)+random(-mouseOffset, mouseOffset);
+    if (newRadius > 0){
+      reads[i] = newRadius;
+    }
+      else
+     { 
+      reads[i] = 0.0f;
+      
+  }
+  }
+}
+updateBeacons();
+  }
     
 
 void guess(Intersect[] ints){
@@ -208,15 +285,20 @@ void guess(Intersect[] ints){
   
   Xguesses[guessCount] = bestXavg;
   Yguesses[guessCount] = bestYavg;
-  Xstdevs[guessCount] = bestXDev;
-  Ystdevs[guessCount] = bestYDev;
   
+  targetX = average(Xguesses);
+  targetY = average(Yguesses);
+  targetXdev = stDev(Xguesses);
+  targetYdev = stDev(Yguesses);
   guessCount++;
+}
+
+void displayTarget(){
   noStroke();
-  fill(0,255,0,100);
+  fill(0,50,200,150);
   if (jitter){
-      fill(0,255,0,255);
-  ellipse(average(Xguesses),average(Yguesses),stDev(Xguesses),stDev(Yguesses));}
+  
+  ellipse(targetX, targetY, targetXdev, targetYdev);}
   //  ellipse(average(Xguesses),average(Yguesses),25,25);}
 
   else {
@@ -225,55 +307,24 @@ void guess(Intersect[] ints){
   //text("Best 1/2 avg",average(Xguesses),average(Yguesses));
 }
 
+void displayStage(){
+    background(255);
+  noFill();
+  stroke(0);
+  rect(inset, inset, innerWidth-inset, innerWidth-inset);
+}
+
 void draw(){
   if (wait == false){
   if (guessCount >= Xguesses.length){
     guessCount = 0;
   }
-  beacons[0].clearIntersections();
-  background(255);
-  noFill();
-  stroke(0);
-  rect(inset, inset, innerWidth-inset, innerWidth-inset);
-  if (offset_mouse){
-    mouseOffset = mOff;
+  displayStage();
+  if (isSimulating){
+  simulate(); // not real data!
   }
-  else {
-    mouseOffset = 0.0;
-  }
-  
-  if (!jitter){
-    float newRadius = 0.0;
-  for (int i = 0; i < beacons.length; i++){
-    newRadius = beacons[i].calcDistance(mousePointX,mousePointY)+mouseOffset;
-    if (newRadius > 0){
-      beacons[i].setRadius(newRadius);}
-      else
-     { 
-      beacons[i].setRadius(0.0);
-  }
-  beacons[i].display();
-}
-  }
-  
-  else{
-        float newRadius = 0.0;
-  for (int i = 0; i < beacons.length; i++){
-    newRadius = beacons[i].calcDistance(mousePointX,mousePointY)+random(-mouseOffset, mouseOffset);
-    if (newRadius > 0){
-      beacons[i].setRadius(newRadius);}
-      else
-     { 
-      beacons[i].setRadius(0.0);
-      
-  }
-    beacons[i].display();
-}
-  }
-  rally();
-  guess(beacons[0].myIntersections);
-  textFont(f, 32);
-  fill(0);
+  displayBeacons();
+  displayTarget();
 }
 }
 
