@@ -511,12 +511,12 @@ class Node {
   public void executeCommand(Message newMessage) {
     String command = newMessage.getCommand();
     int issuerID = newMessage.getIssuer();
-
+      if (myAddress != issuerID) {
     //Another node has called an election.
     if (command.equals("elect")) {
 
       //This is not a message from myself!
-      if (myAddress != issuerID) {
+      
 
         // This node should win against the node that sent the current message.
         //This message is not forwarded.
@@ -540,7 +540,7 @@ class Node {
           forwardMessage(newMessage);
         }
       }
-    }
+    
     
     //Another node has claimed victory.
     if (command.equals("victory")) {
@@ -592,6 +592,7 @@ class Node {
     }
     //Whatever state this node ended up in, update the color.
     updateColor();
+  }
   }
 
   //Queue message for sending later, so that it will be forwarded to neighbors.
