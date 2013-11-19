@@ -19,8 +19,8 @@ boolean ctrl;
 
 Node[] allNodes = null;
 public void setup() {
-  size(700, 700);
-  //size(window.innerWidth-50, window.innerHeight-50);
+  //size(700, 700);
+  size(window.innerWidth-50, window.innerHeight-50);
   //size(displayWidth, displayHeight);
   //hint(ENABLE_STROKE_PURE);
   smooth();
