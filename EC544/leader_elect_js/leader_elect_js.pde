@@ -14,8 +14,8 @@ int nodeDelay;
 
 Node[] allNodes = null;
 public void setup() {
-  size(screenWidth, screenHeight);
-  //size(displayWidth, displayHeight);
+  //size(screenWidth, screenHeight);
+  size(displayWidth, displayHeight);
   //hint(ENABLE_STROKE_PURE);
   smooth();
   frameRate(20);
@@ -159,14 +159,14 @@ void mouseDragged(){
   else {
           if (allNodes != null) {
         int index = 0;
-        boolean delete = false;
+        boolean deleteNode = false;
         for (int i = 0; i < allNodes.length; i ++) {
           if (overCircle(allNodes[i].xpos, allNodes[i].ypos, allNodes[i].mySize)) {
             index = i;
-            delete = true;
+            deleteNode = true;
           }
         }
-        if (delete == true) {
+        if (deleteNode == true) {
           //System.out.println(allNodes.length);
           allNodes = origin.removeNode(allNodes, index);
           for (int i = 0; i < allNodes.length; i ++) {
@@ -235,14 +235,14 @@ void mousePressed() {
     else if (mouseButton == RIGHT && allNodes != null) {
       if (allNodes != null) {
         int index = 0;
-        boolean delete = false;
+        boolean deleteNode = false;
         for (int i = 0; i < allNodes.length; i ++) {
           if (overCircle(allNodes[i].xpos, allNodes[i].ypos, allNodes[i].mySize)) {
             index = i;
-            delete = true;
+            deleteNode = true;
           }
         }
-        if (delete == true) {
+        if (deleteNode == true) {
           //System.out.println(allNodes.length);
           allNodes = origin.removeNode(allNodes, index);
           for (int i = 0; i < allNodes.length; i ++) {
