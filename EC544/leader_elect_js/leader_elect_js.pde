@@ -14,12 +14,12 @@ int nodeDelay;
 
 Node[] allNodes = null;
 public void setup() {
-  //size(screenWidth, screenHeight);
-  size(displayWidth, displayHeight);
+  size(screenWidth, screenHeight);
+  //size(displayWidth, displayHeight);
   //hint(ENABLE_STROKE_PURE);
   smooth();
   frameRate(20);
-  f = createFont("Arial Bold", 32, true);
+  f = createFont("Arial", 32, true);
   origin = new Node("origin", 0, 0); 
   nodeIndex = 0;
   nodeDelay = 50;
