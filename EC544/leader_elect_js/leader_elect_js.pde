@@ -505,6 +505,10 @@ class Node {
     isNominated = false;
     timeToVictory = 0;
     isLeader = true;
+    if (myState.equals("infected")){
+      myState = "right";
+      System.out.println(myAddress + ": I am cured!");
+    }
     hasLeader = true;
     leaderAddress = myAddress;
     timeToPanic = millis() + leaderTimeout;
