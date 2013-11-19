@@ -3,8 +3,8 @@ import java.util.Date;
 PFont f;
 static Node origin;
 static Node leaderEx;
-static node nonLeaderEx;
-static node lostEx;
+static Node nonLeaderEx;
+static Node lostEx;
 static Node infectedEx;
 Node a;
 Node b;
@@ -19,8 +19,8 @@ boolean ctrl;
 
 Node[] allNodes = null;
 public void setup() {
-  //size(700, 700);
-  size(window.innerWidth-50, window.innerHeight-50);
+  size(700, 700);
+  //size(window.innerWidth-50, window.innerHeight-50);
   //size(displayWidth, displayHeight);
   //hint(ENABLE_STROKE_PURE);
   smooth();
@@ -107,6 +107,9 @@ public void keyReleased() {
 
 public void drawNodes() {
   if (allNodes != null) {
+    for (int i = 0; i < allNodes.length; i++){
+      allNodes[i].drawRange();
+    }
     for (int i = 0; i < allNodes.length; i++) {
       allNodes[i].drawConnections();
     }
@@ -721,6 +724,12 @@ class Node {
     popMatrix();
   }
 
+  public void drawRange() {
+    noStroke();
+    fill(200,200,200,100);
+    ellipse(xpos, ypos, radius, radius);
+    stroke(1);
+  }
 
   public void drawConnections() {
     strokeWeight(1);
