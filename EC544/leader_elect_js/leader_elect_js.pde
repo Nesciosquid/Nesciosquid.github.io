@@ -625,6 +625,9 @@ class Node {
     }
     else if (!hasLeader) {
       fill(darkGray);
+      if (myState.equals("infected")){
+        fill(black);
+      }
       textFont(f, 30);
       text("?", -10, 12);
     }
@@ -689,7 +692,7 @@ class Node {
 
   public void randomState() {
     if (lock == false) {
-      float random = random(2);
+      float random = random(0,2);
       if (random <= 1) {
         setState("left");
       }
