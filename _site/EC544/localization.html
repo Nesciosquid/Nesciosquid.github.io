@@ -1,0 +1,20 @@
+<html>
+<head>
+<script type="text/javascript"
+  src="processing-1.4.1.min.js"></script>
+</head>
+<body>
+<title>localization with circles</title>
+<h1>Localization using four wireless beacons</h1>
+<ul>
+<li>Move mouse to simulate distance from beacons.</li>
+<li>Click and hold to show node intersections and location guess.</li> 
+<li>Use 'up' key to toggle simulated jitter (randomized variation in sensor readings).</li>
+<li>Use 'down' key to toggle a constant 'offset', indicating badly calibrated beacons.</li>
+<li>Red nodes are 'trusted', and are used for location guessing.</li>
+<li>Size of green circle during jitter indicates one standard deviation.</li>
+
+</ul>
+<canvas data-processing-sources="./circles/circles.pde"></canvas>
+</body>
+</html>
