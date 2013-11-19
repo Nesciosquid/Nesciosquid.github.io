@@ -378,10 +378,12 @@ class Node {
   public void readMessage(Message incomingMessage) {
     if (incomingMessage != null){
     String messageID = incomingMessage.getID();
+    int issuerID = incomingMessage.getIssuer();
     if (seenMessages.containsKey(messageID) == false) {
       seenMessages.put(messageID, incomingMessage);
+      if (issuerID != myAddress){
       executeCommand(incomingMessage);
-    }
+    }}
   }
   }
 
