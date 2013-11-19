@@ -689,11 +689,11 @@ class Node {
 
   public void randomState() {
     if (lock == false) {
-      int random = (int)random(0, 2);
-      if (random == 0) {
+      float random = random(2);
+      if (random <= 1) {
         setState("left");
       }
-      else if (random == 1) {
+      else {
         setState("right");
       }
     }
