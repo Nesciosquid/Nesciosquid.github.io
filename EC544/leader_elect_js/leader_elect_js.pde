@@ -727,7 +727,7 @@ class Node {
   public void drawRange() {
     noStroke();
     fill(200,200,200,100);
-    ellipse(xpos, ypos, radius, radius);
+    ellipse(xpos, ypos, radius*2, radius*2);
     stroke(1);
   }
 
