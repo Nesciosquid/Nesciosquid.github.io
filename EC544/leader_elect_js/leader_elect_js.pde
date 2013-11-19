@@ -287,13 +287,15 @@ class Node {
   HashMap seenMessages = new HashMap();
   int myStroke = 0;
   int myStrokeWeight = 2;
-  int red = color(255, 0, 0); // infected
-  int blue = color(0, 0, 255); // left
-  int green = color(0, 255, 0); // right
-  int white = color(255, 255, 255); // none
-  int black = color(0, 0, 0); // unknown
-  int myColor = white;
-  int myTextColor = black;
+  color red = color(200, 0, 0); // infected
+  color blue = color(0, 0, 255); // left
+  color green = color(0, 255, 0); // right
+  color lightGray = color(200,200,200);
+  color darkGray = color(100,100,100); 
+  color white = color(255, 255, 255); // none
+  color black = color(0, 0, 0); // unknown
+  color myColor = white;
+  color myTextColor = black;
 
   public void checkLeaderStatus() {
     if (neighborChange == true) {
@@ -373,11 +375,13 @@ class Node {
   }
 
   public void readMessage(Message incomingMessage) {
+    if (incomingMessage != null){
     String messageID = incomingMessage.getID();
     if (seenMessages.containsKey(messageID) == false) {
       seenMessages.put(messageID, incomingMessage);
       executeCommand(incomingMessage);
     }
+  }
   }
 
   public boolean doIWin(int challengerAddress) {
@@ -620,7 +624,7 @@ class Node {
       ellipse(0, 0, mySize/2, mySize/2);
     }
     else if (!hasLeader) {
-      fill(255);
+      fill(darkGray);
       textFont(f, 30);
       text("?", -10, 12);
     }
@@ -650,18 +654,18 @@ class Node {
     updateColor();
   }
 
-  public int processColor() {
+  public color processColor() {
     if (myState.equals("none")) {
-      return white;
+      return black;
     }
     else if (myState.equals("infected")) {
       return red;
     }
     else if (myState.equals("left")) {
-      return blue;
+      return lightGray;
     }
     else if (myState.equals("right")) {
-      return green;
+      return white;
     }
     else 
       return black;
@@ -755,6 +759,7 @@ class Node {
   public void pressButton2() {
     if (!isLeader) {
       myState = "infected";
+      updateColor();
     }
     writeMessage(myState);
   }
