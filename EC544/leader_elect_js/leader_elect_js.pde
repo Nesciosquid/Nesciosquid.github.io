@@ -14,7 +14,7 @@ int nodeDelay;
 
 Node[] allNodes = null;
 public void setup() {
-  size(screen.width, screen.height);
+  size(700, 700);
   //size(displayWidth, displayHeight);
   //hint(ENABLE_STROKE_PURE);
   smooth();
@@ -23,7 +23,7 @@ public void setup() {
   origin = new Node("origin", 0, 0); 
   nodeIndex = 0;
   nodeDelay = 50;
-  randomNodes(150);
+  randomNodes(100);
   calcNeighbors();
 }
 
