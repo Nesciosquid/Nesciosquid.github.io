@@ -344,6 +344,7 @@ class Node {
     myAddress = newAddress;
     xpos = newX;
     ypos = newY;
+    updateColor();
   }
 
   public int getAddress() {
@@ -535,11 +536,11 @@ class Node {
   }
 
   public void lockToggle() {
-    if (lock == true) {
-      lock = false;
+    if (lock == false) {
+      lock = true;
     }
     else 
-      lock = true;
+      lock = false;
   }
 
   public boolean canISee(Node target) {
@@ -748,7 +749,10 @@ class Node {
   }
 
   public void pressButton1() {
-    if (!myState.equals("infected") || isLeader) {
+    if (isLeader) {
+      lockToggle();
+    }
+    else if (!infected){
       lockToggle();
     }
   }
