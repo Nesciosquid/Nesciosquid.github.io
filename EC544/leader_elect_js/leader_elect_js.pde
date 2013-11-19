@@ -103,7 +103,7 @@ public void broadcastNodes() {
 public void strobeNodes() {
   if (allNodes != null) {
     for (int i = 0; i < allNodes.length; i++) {
-      allNodes[i].randomState();
+      allNodes[i].cycleState();
     }
   }
 }
@@ -281,7 +281,7 @@ class Node {
   public Message[] outgoingMessages;
   public Message lastInfection;
   float mySize = 30.0f;
-  String myState = "none";
+  String myState = "right";
   boolean lock = false;
   public int myAddress;
   HashMap seenMessages = new HashMap();
@@ -676,20 +676,14 @@ class Node {
 
   public void cycleState() {
     if (lock == false) {
-      if (myState.equals("none")) {
-        setState("left");
-      }
-      else if (myState.equals("left")) {
+      if (myState.equals("left")) {
         setState("right");
       }
       else if (myState.equals("right")) {
-        setState("infected");
+        setState("left");
       }
-      else 
-        setState("none");
-    }
   }
-
+  }
   public void randomState() {
     if (lock == false) {
       float random = random(0,2);
