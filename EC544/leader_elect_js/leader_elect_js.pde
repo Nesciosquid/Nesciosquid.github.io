@@ -20,26 +20,16 @@ public void setup() {
   smooth();
   frameRate(20);
   f = createFont("Arial", 32, true);
-  origin = new Node("origin", 0, 0); 
+  origin = new Node(100000, 0, 0); 
   nodeIndex = 0;
   nodeDelay = 50;
-  randomNodes(100);
+  randomNodes(50);
   calcNeighbors();
 }
 
 public void randomNodes(int number) {
   for (int i = 0; i < number; i ++) {
-    String newNodeName;
-    if (nodeIndex < 10) {
-      newNodeName = "00"+nodeIndex;
-    }
-    else if (nodeIndex < 100) {
-      newNodeName = "0"+nodeIndex;
-    }
-    else {
-      newNodeName = ""+nodeIndex;
-    }
-    allNodes = origin.storeNode(allNodes, new Node(newNodeName, random(50, width-50), random(50, height-50)));
+    allNodes = origin.storeNode(allNodes, new Node(nodeIndex, random(50, width-50), random(50, height-50)));
     nodeIndex++;
     //System.out.println("Storing new node at" + mouseX + ", " + mouseY);
   }
@@ -140,17 +130,7 @@ void mouseDragged() {
       }
     }
     if (!overNode) {
-      String newNodeName;
-      if (nodeIndex < 10) {
-        newNodeName = "00"+nodeIndex;
-      }
-      else if (nodeIndex > 10 && nodeIndex < 100) {
-        newNodeName = "0"+nodeIndex;
-      }
-      else {
-        newNodeName = ""+nodeIndex;
-      }
-      allNodes = origin.storeNode(allNodes, new Node(newNodeName, mouseX, mouseY));
+      allNodes = origin.storeNode(allNodes, new Node(nodeIndex, mouseX, mouseY));
       nodeIndex++;
       //System.out.println("Storing new node at" + mouseX + ", " + mouseY);
     }
@@ -217,17 +197,7 @@ void mousePressed() {
         }
       }
       if (!overNode) {
-        String newNodeName;
-        if (nodeIndex < 10) {
-          newNodeName = "00"+nodeIndex;
-        }
-        else if (nodeIndex > 10 && nodeIndex < 100) {
-          newNodeName = "0"+nodeIndex;
-        }
-        else {
-          newNodeName = ""+nodeIndex;
-        }
-        allNodes = origin.storeNode(allNodes, new Node(newNodeName, mouseX, mouseY));
+        allNodes = origin.storeNode(allNodes, new Node(nodeIndex, mouseX, mouseY));
         nodeIndex++;
         //System.out.println("Storing new node at" + mouseX + ", " + mouseY);
       }
@@ -267,9 +237,9 @@ public void draw() {
 class Message {
   String content;
   String ID;
-  String issuerID;
+  int issuerID;
 
-  Message(String newID, String newContent, String issuer) {
+  Message(String newID, String newContent, int issuer) {
     content = newContent;
     ID = newID;
     issuerID = issuer;
@@ -279,7 +249,7 @@ class Message {
     return ID;
   }
 
-  public String getIssuer() {
+  public int getIssuer() {
     return issuerID;
   }
 
@@ -293,7 +263,7 @@ class Node {
   boolean isLeader = false;
   boolean infected = false;
   boolean awaitingVictory = false;
-  String leaderAddress;
+  int leaderAddress;
   boolean neighborChange = true;
   Date d;
   Node[] myNetwork; 
@@ -313,7 +283,7 @@ class Node {
   float mySize = 30.0f;
   String myState = "none";
   boolean lock = false;
-  public String myAddress;
+  public int myAddress;
   HashMap seenMessages = new HashMap();
   int myStroke = 0;
   int myStrokeWeight = 2;
@@ -368,13 +338,13 @@ class Node {
   }
 
 
-  public Node(String newAddress, float newX, float newY) {
+  public Node(int newAddress, float newX, float newY) {
     myAddress = newAddress;
     xpos = newX;
     ypos = newY;
   }
 
-  public String getAddress() {
+  public int getAddress() {
     return myAddress;
   }
 
@@ -410,10 +380,8 @@ class Node {
     }
   }
 
-  public boolean doIWin(String challengerAddress) {
-    int myAdd = Integer.parseInt(myAddress);
-    int chall = Integer.parseInt(challengerAddress);
-    if (myAdd < chall) {
+  public boolean doIWin(int challengerAddress) {
+    if (myAddress < challengerAddress) {
       //System.out.println(myAddress + " wins against " + challengerAddress);
       return true;
     }
@@ -425,7 +393,7 @@ class Node {
 
   public void executeCommand(Message newMessage) {
     String command = newMessage.getCommand();
-    String issuerID = newMessage.getIssuer();
+    int issuerID = newMessage.getIssuer();
     if (command.equals("elect")) {
       if (myAddress != issuerID) {
         if (doIWin(issuerID)) {
@@ -536,7 +504,7 @@ class Node {
     writeMessage("victory");
   }
 
-  public void allHailOurGloriousLeader(String leaderAddress) {
+  public void allHailOurGloriousLeader(int leaderAddress) {
     if (leaderAddress != myAddress) {
       timeToVictory = 0;
       awaitingVictory = false;
