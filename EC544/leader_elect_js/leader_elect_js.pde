@@ -14,7 +14,7 @@ int nodeDelay;
 
 Node[] allNodes = null;
 public void setup() {
-  size(screenWidth, screenHeight);
+  size(screen.width, screen.height);
   //size(displayWidth, displayHeight);
   //hint(ENABLE_STROKE_PURE);
   smooth();
