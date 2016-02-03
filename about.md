@@ -17,4 +17,4 @@ You can contact me by [email](mailto:a.heuckroth@gmail.com), [Twitter](https://t
 
 ![Photo courtesy of Benjamin Lehman][smallPhoto]
 
-[smallPhoto]: https://lh3.googleusercontent.com/dCFxzrMw-puW0-lCKHb4YybGrdh4AAvcsSJAPJDa4JHqpMHzYISlWKor6fyYIk93Ue40Oy1b54Yj4sCcNftxfXa3GFsLdsnYzm0QCwpQ52IRnp5WDE-3o5SzbYs8TKgCSLkL9lYVwNJhyNWod5O7_2_ErvXez-_H3WWtxfqtrMD3VJHfb1ReQusSCM56t67CA4vvJVtP0h8DInXQ4-fG6wouj-ZzXn7edPFG_YV1mKzhXuepzynDODW0qE26HOuHM0b-o8YA9rkmqfTEBKwq2Ta6vE53A-EMpCc5LMtO9BwtVVw4xereBM8TuvNbvCWsoY5_n7Gaf_zrY1woLEscattXC1Ciq4TFxHzlu9pJ1NAUxgc-RfBrk2EYcShLz0HvIBNgCLhhCGHF4wxJ-MQTihWXuK5mw0P2kiifx0Y3I1IcZivC6yk-U0-p52aRyO6iJHW0psIMwp8eOvCsYPDxorawuQpwEdqX3LLoP8nKEZZx47HCMZv4AflYNkMYVYyRm0zjs5oTlSyGoS-QSM6A5LcKkMVNXWrj6TWndfW1a7x_WrUGSF4DyCsMykvejAOMOxSh=w333-h383-no
+[smallPhoto]: http://i.imgur.com/qn5sQV0.jpg
