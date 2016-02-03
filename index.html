@@ -1,51 +1,36 @@
 ---
 layout: default
-title: Aaron Heuckroth
 ---
-<!-- Styles -->
 
-<link href="{{ site.url }}/assets/css/splash.css" rel="stylesheet">
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
 
-<div class="container">
-  <div id="main-banner" class="invisible-banner" data-banners='[
-  {"name": "fist", "phone": "p-fist", "tablet": "t-fist", "desktop": "d-fist"},
-  {"name": "wet", "phone": "p-wet", "tablet": "t-wet", "desktop": "d-wet"}]'>
-    <h1>Aaron Heuckroth</h1>
-    <h3><i>/Āren&nbsp;Hĕkrôth/&nbsp;&nbsp;&nbsp;(n.)</i></h3>
-    <ol>
-      <li>Computer Engineer</li>
-	  <li>Bio Geek</li>
-      <li>Musician</li>
-    </ol>
-  </div> <!-- End Header -->
+    <span class="post-date">{{ post.date | date_to_string }}</span>
 
-  <div class="container">
+    {{ post.content }}
+  </div>
+  {% endfor %}
+</div>
 
-    <!-- Example row of columns -->
-    <div class="row">
-      <div class="span4">
-        <h2>About</h2>
-        <p>Aaron is a Computer Engineering PhD student at Boston University, where he works with <a href="http://www.cidarlab.org">the CIDAR group</a> on tools for laboratory automation and cyber-physical systems.</p>
-		<p><a class="btn" href="/about">Learn more &raquo;</a></p>
-      </div>
-      <div class="span4">
-        <h2>Portfolio</h2>
-        <p>Projects include 3D-printable laboratory devices, autonomous RC cars, ray-tracing engines, top-down tank-shooter video games, and heavy metal songs about Julius Caesar.</p>
-		<p><a class="btn" href="/portfolio">Learn more &raquo;</a></p>
-      </div>
-      <div class="span4">
-        <h2>Contact</h2>
-        <p>Looking to get in touch with Aaron? Contact info is over here!</p>
-		<p><a class="btn" href="/contact">View details &raquo;</a></p>
-      </div>
-    </div>
-
-    <hr>
-
-    <footer>
-      <p>&copy; Aaron Heuckroth 2014. Photos courtesy of <a href="http://www.benjaminlehman.com/">Benjamin Lehman Photography</a>. Background image from <a href="http://wallpaperswide.com/dark_background_2-wallpapers.html">wallpaperswide</a>.</p>
-    </footer>
-  </div> <!-- /container -->
-
-  <script src="{{ site.url }}/assets/js/banner_response.js"></script>
-
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="/page{{paginator.next_page}}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="/">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="/page{{paginator.previous_page}}">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>

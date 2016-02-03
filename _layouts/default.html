@@ -1,75 +1,30 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This is the default page layout for Heuckroth.com">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="author" content="Aaron Heuckroth" />
-    <title>{{ page.title }}</title>
-
-    <!-- Styles -->
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-        background-repeat: none;
-      }
-    </style>
-
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-
-    <style>
-
-    body {
-      background-color: #252528;
-      color: white;
-    }
-
-    .phone-bg{
-    background-image:url({{site.url}}/assets/img/phone_bg.jpg);
-    }
-
-   .tablet-bg{
-    background-image:url({{site.url}}/assets/img/tablet_bg.jpg);
-    }
-    .desktop-bg{
-    background-image:url({{site.url}}/assets/img/desktop_bg.jpg);
-    }
-
-    .navbar-fixed-top {
-    box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, .6);
-    }
-
-    </style>
-
-    <!-- Javascript -->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="{{ site.url }}/assets/js/background_response.js"></script>
-
-    <!--<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">-->
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-
-  </head>
+  {% include head.html %}
 
   <body>
-    {% include header.html %}
 
-    {{ content }}
+    {% include sidebar.html %}
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">{{ site.title }}</a>
+            <small>{{ site.tagline }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        {{ content }}
+      </div>
+    </div>
+
   </body>
-
 </html>
