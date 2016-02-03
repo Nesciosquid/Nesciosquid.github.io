@@ -15,6 +15,4 @@ I'm gay, highly outspoken, and I want you to say hello!
 
 You can contact me by [email](mailto:aaron@heuckroth.com), [Twitter](https://twitter.com/Nesciosquid), or by shouting my name really loud outside the [SLURP Lab](http://www.bu.edu/ece/undergraduate/instructional-laboratories/smart-lighting-undergraduate-research-program-slurp-laboratory/) on the second floor of the [BU Photonics Center](http://www.bu.edu/photonics/). (Please don't actually do that. People will think you're weird.)
 
-![Photo courtesy of Benjamin Lehman][smallPhoto]
-
-[smallPhoto]: http://i.imgur.com/qn5sQV0.jpg
+![Photo courtesy of Benjamin Lehman](http://i.imgur.com/qn5sQV0.jpg){: .center-image }
