@@ -1,5 +1,5 @@
 # Dependencies
-highlighter:      pygments
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
@@ -14,8 +14,6 @@ author:
   name:           'Aaron Heuckroth'
   url:            https://twitter.com/Nesciosquid
 paginate:         5
-
-gems:             [jekyll-paginate]
 
 github:
   repo:           https://github.com/Nesciosquid
