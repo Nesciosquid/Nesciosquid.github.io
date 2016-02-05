@@ -5,6 +5,8 @@ layout: post
 
 I'm working on a project right now that requires small, electronic light sensors. I need them to detect when a laser hits them and generate a wireless transmission as a response.
 
+I set out to see what kind of sensors I could build cheaply with [my 3D printer](http://printrbot.com/shop/assembled-metal-printrbot-plus/) and an Arduino.
+
 ## Inspiration
 
 A few years back, I came across [some awesome automatic projector calibration work](http://johnnylee.net/projects/thesis/) by Johnny Chung Lee at Carnegie Mellon. He has a bunch of great projects on his website, but this one stood out to me because it solved a practical problem (aligning multiple projectors) with inexpensive components.
