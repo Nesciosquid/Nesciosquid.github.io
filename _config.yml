@@ -3,15 +3,24 @@ permalink:        pretty
 
 # Setup
 title:            Aaron Heuckroth
-tagline:          'code, 3D printing, music, etc.'
-description:      ''
+tagline:          '(Nesciosquid)'
+description:      'Thoughts on code, 3D printing, music, and more.'
 url:              www.heuckroth.com
 
 author:
-  name:           'Aaron Heuckroth'
-  url:            https://twitter.com/Nesciosquid
+  name:           Aaron Heuckroth
+  url:            http://www.heuckroth.com
+  uri:            http://www.heuckroth.com/about
+  email:          aaron@heuckroth.com
+
 paginate:         5
+
+twitter:
+    username: Nesciosquid
 
 gems:             
 - jekyll-paginate
 - jekyll-gist
+- jekyll-seo-tag
+- jekyll-sitemap
+- jekyll-feed

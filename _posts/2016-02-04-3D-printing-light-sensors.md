@@ -38,18 +38,20 @@ I grabbed some spare fiber parts that were laying around, and found [some cheap 
 
 Luckily, these snap connectors fit perfectly over the photoresistors, holding the fiber in place above them. I fired up OpenSCAD, and designed a 3D printable structure (basically just a flat plane with a bunch of holes in it) that would hold a photoresistor, an optical fiber connector, and a 10K resistor. 
 
-![](http://i.imgur.com/Fid5P4Xl.png){: .center-image}
+{% gist Nesciosquid/d9c08b1a1a42c65fb8c2 fiberConnector_single.stl %}
 
 Despite knowing or being able to measure the sizes of all the components, my experience with FDM printers told me that I would have to print the holes larger than expected, since they tend to come out smaller than intended after printing. To get the sizes just right, I printed a test block [like this one](http://www.thingiverse.com/thing:242437) and shoved things through until I found a post-printing hole size that was a perfect fit for every part. From there, making sure all three components fit relative to one another was just a matter of printing tests and tweaking the settings in OpenSCAD until everything was snug.
 
-To make it easier to wire up multiple sensors to my Arduino, I printed a block with three of these sets of holes in a row, which would allow me to attach three photoresistors to three separate analog inputs while combining their power and ground lines. 
+To make it easier to wire up multiple sensors to my Arduino, I printed a block with three of these sets of holes in a row, which would allow me to attach three photoresistors to three separate analog inputs while combining their power and ground lines. This is one of the great things about designing with OpenSCAD -- as soon as you have the base geometry programmed in and parameterized, modifying it is super easy!
 
-![](http://i.imgur.com/5SkKHsXl.png){: .center-image}
+{% gist Nesciosquid/d9c08b1a1a42c65fb8c2 fiberConnector_triple.stl %}
+
 ![](http://i.imgur.com/lg1W5VMl.jpg){: .center-image}
 
 To simulate the wooden board used in the paper, I also designed a small block with holes -- large on one side and small on the other -- where fibers could be inserted from the back and have only the small tip poke through on the other side. I added a hole next to each of these to pressure-fit an LED. I shoved an LED into each hole, and wired up each one to a separate digital pin on the Arduino.
 
-![](http://i.imgur.com/l8tCwwXl.jpg){: .center-image}
+{% gist Nesciosquid/d9c08b1a1a42c65fb8c2 fiberTestPlate.stl %}
+
 ![](http://i.imgur.com/ch4cR75l.jpg){: .center-image}
 ![](http://i.imgur.com/QHDitZal.jpg){: .center-image}
 
