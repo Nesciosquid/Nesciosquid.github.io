@@ -2,11 +2,13 @@
 permalink:        pretty
 
 # Setup
-name:             heuckroth.com
-title:            'Aaron Heuckroth'
-tagline:          '(Nesciosquid)'
-description:      'Thoughts on code, 3D printing, music, and more.'
-url:              http://www.heuckroth.com
+title: Aaron Heuckroth
+tagline: (Nesciosquid)
+description: Thoughts on code, 3D printing, music, and more.
+baseurl: ""
+url: http://www.heuckroth.com
+twitter_username: Nesciosquid
+github_username: Nesciosquid
 
 feed:
   path: atom.xml
@@ -14,7 +16,6 @@ feed:
 author:
   name:           'Aaron Heuckroth'
   url:            http://www.heuckroth.com
-  uri:            http://www.heuckroth.com/about
   email:          aaron@heuckroth.com
 
 paginate:         5
