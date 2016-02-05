@@ -12,4 +12,6 @@ author:
   url:            https://twitter.com/Nesciosquid
 paginate:         5
 
-gems:             [jekyll-paginate]
+gems:             
+- jekyll-paginate
+- jekyll-gist
