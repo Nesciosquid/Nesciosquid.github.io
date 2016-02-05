@@ -7,6 +7,9 @@ tagline:          '(Nesciosquid)'
 description:      'Thoughts on code, 3D printing, music, and more.'
 url:              www.heuckroth.com
 
+feed: 
+  path: atom.xml
+
 author:
   name:           Aaron Heuckroth
   url:            http://www.heuckroth.com
