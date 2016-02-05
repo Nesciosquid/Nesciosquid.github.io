@@ -16,7 +16,7 @@ It looks like a wooden board with holes drilled in the corners, through which op
 
 I ordered a bunch of light sensors, varying in quality and price from [cheapo photoresistors](http://www.amazon.com/Sensitive-Resistor-Photoresistor-Optoresistor-GM5539/dp/B00AQVYWA2/ref=pd_sim_sbs_328_1?ie=UTF8&dpID=41KHtHCjzUL&dpSrc=sims&preST=_AC_UL160_SR160%2C160_&refRID=05CNNDN4JF1YT7WR48Z5) to [log-scale Analog sensors](https://www.adafruit.com/products/1384) to [I2C digital sensors](https://www.adafruit.com/products/1980:). 
 
-Since they shipped fastest, I tried the photoresistors first, [following Adafruit's Arduino instructions] using a 10K pull-down resistor. Even in relatively bright ambient light, I was able to see a significant change in the sensor when struck by the laser beam. 
+Since they shipped fastest, I tried the photoresistors first, [following Adafruit's Arduino instructions](https://learn.adafruit.com/photocells/using-a-photocell) using a 10K pull-down resistor. Even in relatively bright ambient light, I was able to see a significant change in the sensor when struck by the laser beam. 
 
 Encouraged by this, I started looking for ways to couple these photoresistors to optical fibers, as was done in the paper. Since I'm new to optics, I asked around to see if anyone knew of a cheap, easy way to do that, and most people seemed to think that simply shoving the fibers up against the optical resistors would be super inefficient. Turns out, they were right, but that doesn't seem to matter!
 
