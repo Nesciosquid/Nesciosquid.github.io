@@ -5,15 +5,15 @@ permalink:        pretty
 title:            Aaron Heuckroth
 tagline:          '(Nesciosquid)'
 description:      'Thoughts on code, 3D printing, music, and more.'
-url:              www.heuckroth.com
+url:              http://www.heuckroth.com/
 
 feed: 
   path: atom.xml
 
 author:
   name:           Aaron Heuckroth
-  url:            http://www.heuckroth.com
-  uri:            http://www.heuckroth.com/about
+  url:            http://www.heuckroth.com/
+  uri:            http://www.heuckroth.com/about/
   email:          aaron@heuckroth.com
 
 paginate:         5
