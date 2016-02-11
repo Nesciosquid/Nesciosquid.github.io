@@ -18,8 +18,8 @@ A few years back, I came across [some awesome automatic projector calibration wo
 
 While experimenting with ways to build my light sensors, I realized that my requirements were very similar to the ones from his project, and wondered if I could replicate his hardware setup. [The paper](http://johnnylee.net/academic/proj4.pdf) mostly focuses on the methodology used to process data from the sensors into calibration information, but it does contain a few pictures of the target object. 
 
-![](http://i.imgur.com/GdOKPZn.png){: .center-image}
-![](http://i.imgur.com/onUZgdA.png){: .center-image}
+![](http://i.imgur.com/GdOKPZn.png)
+![](http://i.imgur.com/onUZgdA.png)
 
 It looks like a wooden board with holes drilled in the corners, through which optical fibers have been pushed. In the back, those fibers connect to what the paper desecribes as a "USB Sensor Board," which presumably contains a light sensor coupled to each fiber. I wasn't able to find the USB board used in the paper, so I decided to experiment with building my own version of the setup. 
 
@@ -27,7 +27,7 @@ It looks like a wooden board with holes drilled in the corners, through which op
 
 I ordered a bunch of light sensors, varying in quality and price from [cheapo photoresistors](http://www.amazon.com/Sensitive-Resistor-Photoresistor-Optoresistor-GM5539/dp/B00AQVYWA2/ref=pd_sim_sbs_328_1?ie=UTF8&dpID=41KHtHCjzUL&dpSrc=sims&preST=_AC_UL160_SR160%2C160_&refRID=05CNNDN4JF1YT7WR48Z5) to [log-scale Analog sensors](https://www.adafruit.com/products/1384) to [I2C digital sensors](https://www.adafruit.com/products/1980:). 
 
-![](http://i.imgur.com/nrnjbCG.jpg){: .center-image}
+![](http://i.imgur.com/nrnjbCG.jpg)
 
 Since they shipped fastest, I tried the photoresistors first, [following Adafruit's Arduino instructions](https://learn.adafruit.com/photocells/using-a-photocell) using a 10K pull-down resistor. Even in relatively bright ambient light, I was able to see a significant change in the sensor when struck by the laser beam. 
 
@@ -39,7 +39,7 @@ Further research yielded [this StackExchange post](http://electronics.stackexcha
 
 I grabbed some spare fiber parts that were laying around, and found [some cheap plastic snaps](http://i-fiberoptics.com/light-pipe-connector-detail.php?id=2040) which were originally intended to attach them to LEDs mounted to a circuit board. 
 
-![](http://i.imgur.com/p2Lqfaa.jpg){: .center-image}
+![](http://i.imgur.com/p2Lqfaa.jpg)
 
 Luckily, these snap connectors fit perfectly over the photoresistors, holding the fiber in place above them. I fired up OpenSCAD, and designed a 3D printable structure (basically just a flat plane with a bunch of holes in it) that would hold a photoresistor, an optical fiber connector, and a 10K resistor. 
 
@@ -51,24 +51,24 @@ To make it easier to wire up multiple sensors to my Arduino, I printed a block w
 
 {% gist Nesciosquid/d9c08b1a1a42c65fb8c2 fiberConnector_triple.stl %}
 
-![](http://i.imgur.com/lg1W5VMl.jpg){: .center-image}
+![](http://i.imgur.com/lg1W5VMl.jpg)
 
 To simulate the wooden board used in the paper, I also designed a small block with holes -- large on one side and small on the other -- where fibers could be inserted from the back and have only the small tip poke through on the other side. I added a hole next to each of these to pressure-fit an LED. I shoved an LED into each hole, and wired up each one to a separate digital pin on the Arduino.
 
 {% gist Nesciosquid/d9c08b1a1a42c65fb8c2 fiberTestPlate.stl %}
 
-![](http://i.imgur.com/ch4cR75l.jpg){: .center-image}
-![](http://i.imgur.com/QHDitZal.jpg){: .center-image}
+![](http://i.imgur.com/ch4cR75l.jpg)
+![](http://i.imgur.com/QHDitZal.jpg)
 
 ## Testing
 
 I wrote up a quick Arduino sketch, which measured the analog inputs associated with each photoresistor and turned on its corresponding LED if the reading passed a certain value, while also passing these readings to a serial console for analysis. Since the snap connectors and optical fibers occluded the photoresistors beneath them, this new setup had even better behavior than the photoresistors did by themselves. With a little tweaking, I was able to see a nearly hundred-fold increase in light intensity when a fiber tip was struck by a laser than when it was exposed only to ambient light. More than good enough for a trigger!
 
-![](https://j.gifs.com/rk92n6.gif){: .center-image}
+![](https://j.gifs.com/rk92n6.gif)
 
 Even better, it works from nearly a 90 degree angle!
 
-![](https://j.gifs.com/VOQvK1.gif){: .center-image}
+![](https://j.gifs.com/VOQvK1.gif)
 
 ## Problems / Future Fun
 
