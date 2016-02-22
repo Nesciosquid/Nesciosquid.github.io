@@ -1,25 +1,30 @@
 ---
-title: Computing mathematical limitations for beam scanning
+title: Computing mathematical constraints for beam steering
 layout: post
 ---
 
 I want to do this: 
+
 ![](https://j.gifs.com/G694LQ.gif)
 
-The beam-steering device has the ability to redirect an incident beam up to some half-angle $$ \theta_D $$. In the case of the device I'll working with, I've been told that this is around **30 degrees** in any direction -- up, down, left, or right.
+In that simulation, a device scans a beam across a 3D space, where it hits sensors which calibrate the beam's position and orientation so that it can be pointed at specific objects. As I move towards implementing a real-life version, I wanted to nail down some of the constraints which will determine how well the system can perform, in terms of scanning speed and resolution.
+
+Our beam-steering device has the ability to redirect an incident beam up to some half-angle $$ \theta_D $$. In the case of the device I'll be working with, I've been told that this is around **30 degrees** in any direction -- up, down, left, or right.
 
 We can model the field of view of the device as a rectangle, where the width and height are determined by $$ \theta_D $$. At a given distance $$ D $$, we can use trig to compute the width $$ W $$ of this field of view as $$ 2\tan(\theta_D)*D $$
 
+![](http://i.imgur.com/VeGngf4.jpg)
+
 For example, if our device has a half-angle of 30 degrees and is positioned **10 feet** away from a surface, we can estimate that the field of view will be approximately $$ 2\tan(30)*10 = 11.5 $$ feet wide.
 
-The next factor to consider is the speed at which the device can scan. For our device, the time it takes to travel from one end of its range to the other, $$t_D$$, is about **12 milliseconds.**. In order for a sensor to detect the presence of a beam pointed at it, the microcontroller must sample the output of the sensor while the beam is still shining upon the sensor's surface. This means that the sampling rate of the microcontroller determines how long the beam must shine on a sensor in order to successfully register a hit.
+The next factor to consider is the speed at which the device can scan. For our device, the time it takes to travel from one end of its range to the other, $$t_D$$, is about **12 milliseconds**. In order for a sensor to detect the presence of a beam pointed at it, the microcontroller must sample the output of the sensor while the beam is still shining upon the sensor's surface. This means that the sampling rate of the microcontroller determines how long the beam must shine on a sensor in order to successfully register a hit.
 
 Let's assume we want the beam to sweep as fast as possible. That means that, in order to ensure that any sensor within the field of view will be illuminated long enough to see the beam as it scans across, the radius of the beam must be equal to or larger than the distance traveled by the beam over the course of one sample. (This makes the assumption that the center of the beam passes directly over the sensor, but it's just an estimate!)
 
 Instead of computing the ideal beam radius at a particular distance, we can determine what proportion of the field of view must be occupied by the beam at any time to ensure that sensors will be tripped. We know that the beam travels the full width of the field of view $$W$$ in **12 milliseconds**. Assuming a sampling time $$t_S$$ of **100 microseconds** (standard for Arduino analog reads), this means that the sample time is 120x smaller than our sweep time. That means that, independent of the distance $$D$$, the beam width $$B$$ must be greater than or equal to one 120th of the field of view width.
 
 $$
-	B\geq\frac{W}{\frac{t_D}{t_S}}
+    B\geq\frac{W}{\frac{t_D}{t_S}}
 $$
 
 From earlier, $$D$$ was 10 feet and $$W$$ was 11.5 feet. That means $$B$$ must be at least $$\frac{11.5}{120}$$ = **.096 feet, or 1.15 inches.**
@@ -27,7 +32,7 @@ From earlier, $$D$$ was 10 feet and $$W$$ was 11.5 feet. That means $$B$$ must b
 In general, this tells us that we can compute the minimum beam half-angle $$\theta_B$$ based only on $$\theta_D$$, $$t_D$$ and $$t_S$$.
 
 $$
-	\arctan(\frac{\tan(\theta_D)}{\frac{t_D}{t_S}})
+    \arctan(\frac{\tan(\theta_D)}{\frac{t_D}{t_S}})
 $$
 
 This gives us a $$\theta_B$$ of $$\arctan(\frac{\tan(30)}{\frac{1200}{100}})$$ = **.276 degrees.**
