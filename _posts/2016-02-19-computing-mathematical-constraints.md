@@ -12,7 +12,7 @@ In that simulation, a device scans a beam across a 3D space, where it hits senso
 
 Our beam-steering device has the ability to redirect an incident beam up to some half-angle $$ \theta_D $$. In the case of the device I'll be working with, I've been told that this is around **30 degrees** in any direction -- up, down, left, or right.
 
-We can model the field of view of the device as a rectangle, where the width and height are determined by $$ \theta_D $$. At a given distance $$ D $$, we can use trig to compute the width $$ W $$ of this field of view as $$ 2\tan(\theta_D)*D $$
+We can model the field of view of the device as a cone with a half-angle of $$ \theta_D $$. At a given distance $$ D $$, we can use trig to compute the width $$ W $$ of this field of view as $$ 2\tan(\theta_D)*D $$
 
 ![](http://i.imgur.com/VeGngf4.jpg)
 
@@ -22,119 +22,10 @@ The next factor to consider is the speed at which the device can scan. For our d
 
 Let's assume we want the beam to sweep as fast as possible. That means that, in order to ensure that any sensor within the field of view will be illuminated long enough to see the beam as it scans across, the radius of the beam must be equal to or larger than the distance traveled by the beam over the course of one sample. (This makes the assumption that the center of the beam passes directly over the sensor, but it's just an estimate!)
 
+This concept is shown in the animation below. The blue circle is twice as wide as the red circle. The red and blue numbers represent how long each circle overlaps the black spot in the center as they travel across it. You can see that the blue circle overlaps the dot roughly twice as long as the red one does. [You can find the code for this demonstration here.](https://gist.github.com/Nesciosquid/bb388d4db6eb56525d0a)
+
 <canvas class="canvas-example" id="myCanvas"></canvas>
-<script type="text/paperscript" canvas="myCanvas">
-    var laserRadius = 60;
-    var sensorRadius = 5;
-    var scanningTime = 2; //seconds
-
-    var scanningSpeed = project.view.bounds.width / scanningTime;
-    var laserCircle = new Path.Circle(project.view.bounds.leftCenter, laserRadius);
-
-    var sensorCircle = new Path.Circle(project.view.center, sensorRadius);
-    sensorCircle.fillColor = 'black';
-
-    laserCircle.fillColor = 'red';
-
-    var sensorTime = 0;
-
-    console.log("updated");
-
-    var timeText = new PointText(project.view.center);
-    timeText.position.y += project.view.bounds.height/4;
-    timeText.content = "" + sensorTime;
-    timeText.style = {
-        fontFamily: 'Courier New',
-        fontSize: 20,
-        justification: 'center',
-        fillColor: 'black',
-        strokeColor: 'black'
-    };
-
-    function onFrame(event){
-        var offset = scanningSpeed * event.delta;
-        laserCircle.position.x += offset;
-
-        if (laserCircle.position.x > project.view.bounds.width){
-            laserCircle.position.x = 0;
-            sensorTime = 0;
-        }
-
-        var hit = hitTest(laserCircle, sensorCircle);
-
-        if (hit){
-            sensorTime += event.delta;
-        }
-
-        timeText.content = sensorTime.toFixed(4);
-    }
-
-    function hitTest(laser, sensor){
-        if (laser.contains(sensor.position)){
-            sensor.fillColor = 'green';
-            return true;
-        } else {
-            sensor.fillColor = 'black';
-            return false;
-        }
-    }
-
-</script>
-<canvas class="canvas-example" id="myCanvas2"></canvas>
-<script type="text/paperscript" canvas="myCanvas2">
-    var laserRadius = 120;
-    var sensorRadius = 5;
-    var scanningTime = 2; //seconds
-
-    var scanningSpeed = project.view.bounds.width / scanningTime;
-    var laserCircle = new Path.Circle(project.view.bounds.leftCenter, laserRadius);
-
-    var sensorCircle = new Path.Circle(project.view.center, sensorRadius);
-    sensorCircle.fillColor = 'black';
-
-    laserCircle.fillColor = 'red';
-
-    var sensorTime = 0;
-
-    var timeText = new PointText(project.view.center);
-    timeText.position.y += project.view.bounds.height/4;
-    timeText.content = "" + sensorTime;
-    timeText.style = {
-        fontFamily: 'Courier New',
-        fontSize: 20,
-        justification: 'center',
-        fillColor: 'black',
-        strokeColor: 'black'
-    };
-
-    function onFrame(event){
-        var offset = scanningSpeed * event.delta;
-        laserCircle.position.x += offset;
-
-        if (laserCircle.position.x > project.view.bounds.width){
-            laserCircle.position.x = 0;
-            sensorTime = 0;
-        }
-
-        var hit = hitTest(laserCircle, sensorCircle);
-
-        if (hit){
-            sensorTime += event.delta;
-        }
-
-        timeText.content = sensorTime.toFixed(4);
-    }
-
-    function hitTest(laser, sensor){
-        if (laser.contains(sensor.position)){
-            sensor.fillColor = 'green';
-            return true;
-        } else {
-            sensor.fillColor = 'black';
-            return false;
-        }
-    }
-
+<script type="text/paperscript" canvas="myCanvas" src="https://cdn.rawgit.com/Nesciosquid/bb388d4db6eb56525d0a/raw/scanRadiusTiming.js">
 </script>
 Instead of computing the ideal beam radius at a particular distance, we can determine what proportion of the field of view must be occupied by the beam at any time to ensure that sensors will be tripped. We know that the beam travels the full width of the field of view $$W$$ in **12 milliseconds**. Assuming a sampling time $$t_S$$ of **100 microseconds** (standard for Arduino analog reads), this means that the sample time is 120x smaller than our sweep time. That means that, independent of the distance $$D$$, the beam width $$B$$ must be greater than or equal to one 120th of the field of view width.
 
@@ -156,7 +47,7 @@ This also tells us that we can further reduce the minimum beam width by decreasi
 
 Since our beam width determines the resolution of our scan, this means that by increasing the sampling frequency of our sensors, we can perform higher-resolution scans at faster speeds. 
 
-There's a catch, though -- the smaller we make the beam, the longer the scan will take. The smaller $$B$$ is, the more rows we have to scan to cover the entire surface. Assuming that the FOV is square (which it isn't) and that the beam is 750x smaller than its width, this could take $$750 * 12 = 9000$$ milliseconds. That's way too long!
+There's a catch, though -- the smaller we make the beam, the longer the scan will take. The smaller $$B$$ is, the more rows we have to scan to cover the entire space. Assuming that the FOV is square (which it isn't) and that the beam is 750x smaller than its width, this could take $$750 * 12 = 9000$$ milliseconds. That's way too long!
 
 Thankfully, our device gives us dynamic control over the beam width, and we're not required to scan the laser over the entire field of view for every scan. The trick will be to tune the beam width for faster or slower scans, and to develop a scanning algorithm that maximizes resolution while minimizing overall scan time. We'll also have to account for the fact that, since the cross-sections of the FOV and beam are both approximately circular, we'll need to adjust these calculations to account for partial overlap between the beam and the sensor and the reduced space of the FOV which lies within a square projection if we want to take a row-scanning approach.
 
