@@ -25,6 +25,12 @@
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
 
+  {% if page.custom_js %}
+    {% for js_file in page.custom_js %}
+      <script src='/public/js/{{js_file}}' type="text/javascript"></script>
+    {% endfor %}
+  {% endif %}
+
   <!-- RSS -->
   {% feed_meta %}
   {% seo %} 

@@ -1,7 +1,10 @@
 ---
 title: Computing mathematical constraints for beam steering
 layout: post
+custom_js:
+    - paper-full.min.js
 ---
+
 
 I want to do this: 
 
@@ -21,6 +24,118 @@ The next factor to consider is the speed at which the device can scan. For our d
 
 Let's assume we want the beam to sweep as fast as possible. That means that, in order to ensure that any sensor within the field of view will be illuminated long enough to see the beam as it scans across, the radius of the beam must be equal to or larger than the distance traveled by the beam over the course of one sample. (This makes the assumption that the center of the beam passes directly over the sensor, but it's just an estimate!)
 
+<canvas class="canvas-example" id="myCanvas"></canvas>
+<script type="text/paperscript" canvas="myCanvas">
+    var laserRadius = 60;
+    var sensorRadius = 5;
+    var scanningTime = 2; //seconds
+
+    var scanningSpeed = project.view.bounds.width / scanningTime;
+    var laserCircle = new Path.Circle(project.view.bounds.leftCenter, laserRadius);
+
+    var sensorCircle = new Path.Circle(project.view.center, sensorRadius);
+    sensorCircle.fillColor = 'black';
+
+    laserCircle.fillColor = 'red';
+
+    var sensorTime = 0;
+
+    var timeText = new PointText(project.view.center);
+    timeText.position.y += project.view.bounds.height/4;
+    timeText.content = "" + sensorTime;
+    timeText.style = {
+        fontFamily: 'Courier New',
+        fontSize: 20,
+        justification: 'center',
+        fillColor: 'black',
+        strokeColor: 'black'
+    };
+
+    function onFrame(event){
+        var offset = scanningSpeed * event.delta;
+        laserCircle.position.x += offset;
+
+        if (laserCircle.position.x > project.view.bounds.width){
+            laserCircle.position.x = 0;
+            sensorTime = 0;
+        }
+
+        var hit = hitTest(laserCircle, sensorCircle);
+
+        if (hit){
+            sensorTime += event.delta;
+        }
+
+        timeText.content = sensorTime.toFixed(4);
+    }
+
+    function hitTest(laser, sensor){
+        if (laser.contains(sensor.position)){
+            sensor.fillColor = 'green';
+            return true;
+        } else {
+            sensor.fillColor = 'black';
+            return false;
+        }
+    }
+
+</script>
+<canvas class="canvas-example" id="myCanvas2"></canvas>
+<script type="text/paperscript" canvas="myCanvas2">
+    var laserRadius = 120;
+    var sensorRadius = 5;
+    var scanningTime = 2; //seconds
+
+    var scanningSpeed = project.view.bounds.width / scanningTime;
+    var laserCircle = new Path.Circle(project.view.bounds.leftCenter, laserRadius);
+
+    var sensorCircle = new Path.Circle(project.view.center, sensorRadius);
+    sensorCircle.fillColor = 'black';
+
+    laserCircle.fillColor = 'red';
+
+    var sensorTime = 0;
+
+    var timeText = new PointText(project.view.center);
+    timeText.position.y += project.view.bounds.height/4;
+    timeText.content = "" + sensorTime;
+    timeText.style = {
+        fontFamily: 'Courier New',
+        fontSize: 20,
+        justification: 'center',
+        fillColor: 'black',
+        strokeColor: 'black'
+    };
+
+    function onFrame(event){
+        var offset = scanningSpeed * event.delta;
+        laserCircle.position.x += offset;
+
+        if (laserCircle.position.x > project.view.bounds.width){
+            laserCircle.position.x = 0;
+            sensorTime = 0;
+        }
+
+        var hit = hitTest(laserCircle, sensorCircle);
+
+        if (hit){
+            sensorTime += event.delta;
+        }
+
+        timeText.content = sensorTime.toFixed(4);
+    }
+
+    function hitTest(laser, sensor){
+        if (laser.contains(sensor.position)){
+            sensor.fillColor = 'green';
+            return true;
+        } else {
+            sensor.fillColor = 'black';
+            return false;
+        }
+    }
+
+</script>
 Instead of computing the ideal beam radius at a particular distance, we can determine what proportion of the field of view must be occupied by the beam at any time to ensure that sensors will be tripped. We know that the beam travels the full width of the field of view $$W$$ in **12 milliseconds**. Assuming a sampling time $$t_S$$ of **100 microseconds** (standard for Arduino analog reads), this means that the sample time is 120x smaller than our sweep time. That means that, independent of the distance $$D$$, the beam width $$B$$ must be greater than or equal to one 120th of the field of view width.
 
 $$

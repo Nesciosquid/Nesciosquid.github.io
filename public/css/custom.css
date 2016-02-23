@@ -4,6 +4,12 @@
   max-width: 100%;
 }
 
+.canvas-example {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
 img + img {
   padding-top: 15px; 
 }
