@@ -38,6 +38,8 @@ Let's assume we want the beam to sweep as fast as possible. That means that, in 
 
     var sensorTime = 0;
 
+    console.log("updated");
+
     var timeText = new PointText(project.view.center);
     timeText.position.y += project.view.bounds.height/4;
     timeText.content = "" + sensorTime;
