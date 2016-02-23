@@ -2,6 +2,13 @@
 permalink:        pretty
 
 # Setup
+
+author:
+  name: Aaron Heuckroth
+  url:  http://www.heuckroth.com
+  email:  aaron@heuckroth.com
+  twitter: Nesciosquid
+  
 name: heuckroth.com
 title: Aaron Heuckroth
 tagline: (Nesciosquid)
@@ -11,14 +18,10 @@ url: http://www.heuckroth.com
 twitter_username: Nesciosquid
 github_username: Nesciosquid
 
+
 feed:
   path: atom.xml
-
-author:
-  name:           'Aaron Heuckroth'
-  url:            http://www.heuckroth.com
-  email:          aaron@heuckroth.com
-
+  
 paginate:         1
 
 twitter:
