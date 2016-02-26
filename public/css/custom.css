@@ -13,3 +13,9 @@
 img + img {
   padding-top: 15px; 
 }
+
+.center-image {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+}
