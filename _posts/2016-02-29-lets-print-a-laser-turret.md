@@ -88,3 +88,9 @@ The precision of the device has been sufficient to allow me to direct the focuse
 If you're paying very close attention, you may notice that [the largest alignment plate has small cylinders in the nut-holes.](http://i.imgur.com/o0U6fOj.jpg) These are support structures, which I explicitly programmed into the design to ensure that those indentations print correctly. This was necessary since FDM printers can't effectively print overhangs with holes in them. (The medium plate can be printed 'upside-down', so these structures aren't needed.)
 
 While most slicing programs can auto-generate support structures for you, they tend to make a mess of small, enclosed spaces. By explicitly creating those cylinders, I can ensure that the structures are easy to remove after printing, making it much easier to insert the nuts.
+
+## Code
+
+Want to print your own? You can use this OpenSCAD script to generate a device, or you can download the models from [this gist](https://gist.github.com/Nesciosquid/65feb7440378f876cb7e).
+
+{% gist Nesciosquid/65feb7440378f876cb7e threeAxisAligner.scad %}
