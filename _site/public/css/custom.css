@@ -1,0 +1,21 @@
+.post img {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+}
+
+.canvas-example {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
+img + img {
+  padding-top: 15px; 
+}
+
+.center-image {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+}
