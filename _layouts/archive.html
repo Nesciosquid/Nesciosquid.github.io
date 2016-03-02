@@ -1,9 +1,39 @@
-<h1>Archive of posts with {{ page.type }} '{{ page.title }}'</h1>
-<ul class="posts">
-  {% for post in page.posts %}
-    <li>
-      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include sidebar.html %}
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">{{ site.title }}</a>
+            <small>{{ site.tagline }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <h1>Archive of posts with {{ page.type }} '{{ page.title }}'</h1>
+			<ul class="posts">
+			  {% for post in page.posts %}
+			    <li>
+			      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+			      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+			    </li>
+			  {% endfor %}
 </ul>
+
+    </div>
+
+  </body>
+</html>
+
