@@ -18,6 +18,15 @@ url: http://www.heuckroth.com
 twitter_username: Nesciosquid
 github_username: Nesciosquid
 
+jekyll-archives:
+  enabled: ['categories', 'tags']
+  layout: 'archive'
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
 
 feed:
   path: atom.xml
@@ -33,3 +42,4 @@ gems:
 - jekyll-seo-tag
 - jekyll-sitemap
 - jekyll-feed
+- jekyll-archives

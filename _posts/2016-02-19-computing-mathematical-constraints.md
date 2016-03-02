@@ -1,6 +1,8 @@
 ---
 title: Computing mathematical constraints for beam steering
 layout: post
+category: Research
+tags: [Math, Lasers, Simulations, Javascript]
 ---
 
 

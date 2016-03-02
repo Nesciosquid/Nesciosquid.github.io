@@ -1,6 +1,8 @@
 ---
 title: Scanning With Spirals
 layout: post
+category: Research
+tags: [Lasers, Simulations, Javascript]
 ---
 
 <canvas class="canvas-example" id="myCanvas" resize="true" keepalive="true"></canvas>

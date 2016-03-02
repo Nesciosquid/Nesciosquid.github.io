@@ -1,6 +1,8 @@
 ---
 title: Let's Print a Laser Turret
 layout: post
+category: Research
+tags: [3D Printing, Code, Lasers, Hardware, Electronics]
 ---
 
 I'm building a laser turret. (No, it's not a weapon, stop asking!)

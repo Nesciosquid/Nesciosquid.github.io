@@ -2,7 +2,8 @@
 published: true
 title: Turns out, feet are important!
 layout: post
-tags: [3D_Printing]
+category: General
+tags: [3D Printing, Hardware, Problems]
 ---
 After setting a three-hour print up to run overnight, I came back to lab this morning to find this lovely mess:
 

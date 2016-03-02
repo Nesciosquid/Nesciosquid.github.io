@@ -1,6 +1,8 @@
 ---
-title: USB Cables are Also Important
+title: USB cables are also important
 layout: post
+category: General
+tags: [3D Printing, Hardware, Electronics, Problems]
 ---
 
 Remember those rubber feet that [Printrbot](twitter.com/printrbot) was going to send me? 

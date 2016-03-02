@@ -1,6 +1,8 @@
 ---
-title: 3D Printed Light Sensors
+title: 3D-printed light sensors
 layout: post
+category: Research
+tags: [3D Printing, Hardware, Electronics, Lasers, Code]
 ---
 
 I'm working on a project right now that requires small, electronic light sensors. I need them to detect when a laser hits them and generate a wireless transmission as a response.
