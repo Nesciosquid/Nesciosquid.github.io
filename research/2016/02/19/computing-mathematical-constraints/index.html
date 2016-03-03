@@ -24,8 +24,8 @@
   <!-- RSS -->
   <link type="application/atom+xml" rel="alternate" href="http://www.heuckroth.com/atom.xml" title="heuckroth.com" />
   <!-- Begin Jekyll SEO tag v3.0.3 -->
-<title>Computing mathematical constraints for beam steering - Aaron Heuckroth</title>
-<meta property="og:title" content="Computing mathematical constraints for beam steering" />
+<title>Analyzing mathematical constraints for beam steering - Aaron Heuckroth</title>
+<meta property="og:title" content="Analyzing mathematical constraints for beam steering" />
 <meta name="description" content="I want to do this:" />
 <meta property='og:description' content="I want to do this:" />
 <link rel="canonical" href="http://www.heuckroth.com/research/2016/02/19/computing-mathematical-constraints/" />
@@ -41,13 +41,13 @@
   </script>
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-02-19T00:00:00-05:00" />
-<link rel="next" href="http://www.heuckroth.com/research/2016/02/24/scanning-with-spirals/" title="Scanning With Spirals" />
-<link rel="prev" href="http://www.heuckroth.com/general/2016/02/11/usb-cables-are-also-important/" title="USB cables are also important" />
+<link rel="next" href="http://www.heuckroth.com/research/2016/02/24/scanning-with-spirals/" title="Scanning with spirals" />
+<link rel="prev" href="http://www.heuckroth.com/general/2016/02/11/usb-cables-are-also-important/" title="USB cables are also important!" />
 <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "NewsArticle",
-      "headline": "Computing mathematical constraints for beam steering",
+      "headline": "Analyzing mathematical constraints for beam steering",
       "image": null,
       "datePublished": "2016-02-19T00:00:00-05:00",
       "description": "I want to do this:"
@@ -55,7 +55,7 @@
   </script>
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@Nesciosquid" />
-<meta name="twitter:title" content="Computing mathematical constraints for beam steering - Aaron Heuckroth" />
+<meta name="twitter:title" content="Analyzing mathematical constraints for beam steering - Aaron Heuckroth" />
 <meta name="twitter:description" content="I want to do this:" />
 <meta name="twitter:creator" content="@Nesciosquid" />
 <!-- End Jekyll SEO tag --> 
@@ -216,13 +216,25 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Computing mathematical constraints for beam steering</h1>
+  <h1 class="post-title">Analyzing mathematical constraints for beam steering</h1>
   <span class="post-date">19 Feb 2016</span>
   <p>I want to do this:</p>
 
 <p><img src="https://j.gifs.com/G694LQ.gif" alt="" /></p>
 
 <p>In that simulation, a device scans a beam across a 3D space, where it hits sensors which calibrate the beam’s position and orientation so that it can be pointed at specific objects. As I move towards implementing a real-life version, I wanted to nail down some of the constraints which will determine how well the system can perform, in terms of scanning speed and resolution.</p>
+
+<p><em>Skip to a section</em>:</p>
+
+<ol id="markdown-toc">
+  <li><a href="#field-of-view" id="markdown-toc-field-of-view">Field of View</a></li>
+  <li><a href="#scanning-speed" id="markdown-toc-scanning-speed">Scanning Speed</a></li>
+  <li><a href="#beam-width" id="markdown-toc-beam-width">Beam Width</a></li>
+  <li><a href="#resolution-and-scanning-time" id="markdown-toc-resolution-and-scanning-time">Resolution and Scanning Time</a></li>
+  <li><a href="#light-intensity" id="markdown-toc-light-intensity">Light Intensity</a></li>
+</ol>
+
+<h2 id="field-of-view">Field of View</h2>
 
 <p>Our beam-steering device has the ability to redirect an incident beam up to some half-angle <script type="math/tex">\theta_D</script>. In the case of the device I’ll be working with, I’ve been told that this is around <strong>30 degrees</strong> in any direction – up, down, left, or right.</p>
 
@@ -231,6 +243,8 @@
 <p><img src="http://i.imgur.com/VeGngf4.jpg" alt="" /></p>
 
 <p>For example, if our device has a half-angle of 30 degrees and is positioned <strong>10 feet</strong> away from a surface, we can estimate that the field of view will be approximately <script type="math/tex">2\tan(30)*10 = 11.5</script> feet wide.</p>
+
+<h2 id="scanning-speed">Scanning Speed</h2>
 
 <p>The next factor to consider is the speed at which the device can scan. For our device, the time it takes to travel from one end of its range to the other, <script type="math/tex">t_D</script>, is about <strong>12 milliseconds</strong>. In order for a sensor to detect the presence of a beam pointed at it, the microcontroller must sample the output of the sensor while the beam is still shining upon the sensor’s surface. This means that the sampling rate of the microcontroller determines how long the beam must shine on a sensor in order to successfully register a hit.</p>
 
@@ -241,6 +255,8 @@
 <canvas class="canvas-example" id="myCanvas"></canvas>
 <script type="text/paperscript" canvas="myCanvas" src="https://cdn.rawgit.com/Nesciosquid/bb388d4db6eb56525d0a/raw/scanRadiusTiming.js">
 </script>
+
+<h2 id="beam-width">Beam Width</h2>
 
 <p>Instead of computing the ideal beam radius at a particular distance, we can determine what proportion of the field of view must be occupied by the beam at any time to ensure that sensors will be tripped. We know that the beam travels the full width of the field of view <script type="math/tex">W</script> in <strong>12 milliseconds</strong>. Assuming a sampling time <script type="math/tex">t_S</script> of <strong>100 microseconds</strong> (standard for Arduino analog reads), this means that the sample time is 120x smaller than our sweep time. That means that, independent of the distance <script type="math/tex">D</script>, the beam width <script type="math/tex">B</script> must be greater than or equal to one 120th of the field of view width.</p>
 
@@ -256,13 +272,17 @@
 
 <p>This also tells us that we can further reduce the minimum beam width by decreasing <script type="math/tex">t_S</script>. It looks like <a href="http://forum.arduino.cc/index.php?topic=6549.0">there are some tricks</a> to reduce analog Arduino reads down to about 16 microseconds. Plugging that in for <script type="math/tex">t_S</script>, we get a minimum <script type="math/tex">\theta_B</script> of <strong>.0441 degrees</strong>, and a minimum <script type="math/tex">B</script> of <strong>.184 inches</strong>.</p>
 
+<h2 id="resolution-and-scanning-time">Resolution and Scanning Time</h2>
+
 <p>Since our beam width determines the resolution of our scan, this means that by increasing the sampling frequency of our sensors, we can perform higher-resolution scans at faster speeds.</p>
 
 <p>There’s a catch, though – the smaller we make the beam, the longer the scan will take. The smaller <script type="math/tex">B</script> is, the more rows we have to scan to cover the entire space. Assuming that the FOV is square (which it isn’t) and that the beam is 750x smaller than its width, this could take <script type="math/tex">750 * 12 = 9000</script> milliseconds. That’s way too long!</p>
 
 <p>Thankfully, our device gives us dynamic control over the beam width, and we’re not required to scan the laser over the entire field of view for every scan. The trick will be to tune the beam width for faster or slower scans, and to develop a scanning algorithm that maximizes resolution while minimizing overall scan time. We’ll also have to account for the fact that, since the cross-sections of the FOV and beam are both approximately circular, we’ll need to adjust these calculations to account for partial overlap between the beam and the sensor and the reduced space of the FOV which lies within a square projection if we want to take a row-scanning approach.</p>
 
-<p>Another limitation to tackle is the problem of light intensity. As <script type="math/tex">B</script> gets larger, the same amount of light intensity is spread over a larger area upon impacting a surface. This means that the intensity of the light hitting our sensors decreases dramatically with the distance to the target, <script type="math/tex">D</script>, since the area of the cross-section of the beam increases with the square of its radius, and we’re treating light intensity as energy per unit area.</p>
+<h2 id="light-intensity">Light Intensity</h2>
+
+<p>Pairing the power of our laser to the sensitivity of our sensors is going to be tricky. As <script type="math/tex">B</script> gets larger, the same amount of light intensity is spread over a larger area upon impacting a surface. This means that the intensity of the light hitting our sensors decreases dramatically with the distance to the target, <script type="math/tex">D</script>, since the area of the cross-section of the beam increases with the square of its radius, and we’re treating light intensity as energy per unit area.</p>
 
 <p>To overcome this, we’ll either have to make sure our sensors are sensitive enough to pick up small changes in light intensity, or we’ll have to use a stronger laser. I’m going to have to consult with experts to ensure that our solution works at functional ranges without posing a danger to users, since any laser being scanned across an indoor space needs to be eye-safe.</p>
 
@@ -275,7 +295,7 @@
       <li>
         <h3>
           <a href="/research/2016/02/29/lets-print-a-laser-turret/">
-            Let's Print a Laser Turret
+            Let's print a laser turret!
             <small>29 Feb 2016</small>
           </a>
         </h3>
@@ -284,7 +304,7 @@
       <li>
         <h3>
           <a href="/research/2016/02/24/scanning-with-spirals/">
-            Scanning With Spirals
+            Scanning with spirals
             <small>24 Feb 2016</small>
           </a>
         </h3>
@@ -293,7 +313,7 @@
       <li>
         <h3>
           <a href="/general/2016/02/11/usb-cables-are-also-important/">
-            USB cables are also important
+            USB cables are also important!
             <small>11 Feb 2016</small>
           </a>
         </h3>
