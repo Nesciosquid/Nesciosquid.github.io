@@ -3,6 +3,8 @@ title: Scanning with spirals
 layout: post
 category: Research
 tags: [Lasers, Simulations, Javascript]
+redirect_from: 
+  - /2016/02/24/scanning-with-spirals/
 ---
 
 <canvas class="canvas-example" id="myCanvas" resize="true" keepalive="true"></canvas>

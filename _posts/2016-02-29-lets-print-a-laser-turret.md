@@ -3,12 +3,13 @@ title: Let's print a laser turret!
 layout: post
 category: Research
 tags: [3D Printing, Code, Lasers, Hardware, Electronics]
+redirect_from:
+  - /2016/02/29/lets-print-a-laser-turret/
 ---
 
 I'm building a laser turret. (No, it's not a weapon, stop asking!)
 
 ![Full assembly with laser actiated](http://i.imgur.com/BqcEdFCl.jpg)
-
 
 A colleague developed a MEMS micro-mirror capable of rapidly changing its orientation in order to steer a beam of light. I want to use this mirror to create an indoor localization and targeting system, but to do this, we needed a way to package and mount the device inside a room.
 

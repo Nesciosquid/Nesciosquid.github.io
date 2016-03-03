@@ -3,6 +3,8 @@ title: Let's print some light sensors!
 layout: post
 category: Research
 tags: [3D Printing, Hardware, Electronics, Lasers, Code]
+redirect_from:
+  - /2016/02/04/3D-printing-light-sensors/
 ---
 
 ![](http://i.imgur.com/QHDitZal.jpg)
