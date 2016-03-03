@@ -1,5 +1,5 @@
 ---
-title: Scanning With Spirals
+title: Scanning with spirals
 layout: post
 category: Research
 tags: [Lasers, Simulations, Javascript]

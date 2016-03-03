@@ -1,9 +1,11 @@
 ---
-title: 3D-printed light sensors
+title: Let's print some light sensors!
 layout: post
 category: Research
 tags: [3D Printing, Hardware, Electronics, Lasers, Code]
 ---
+
+![](http://i.imgur.com/QHDitZal.jpg)
 
 I'm working on a project right now that requires small, electronic light sensors. I need them to detect when a laser hits them and generate a wireless transmission as a response.
 
@@ -60,7 +62,6 @@ To simulate the wooden board used in the paper, I also designed a small block wi
 {% gist Nesciosquid/d9c08b1a1a42c65fb8c2 fiberTestPlate.stl %}
 
 ![](http://i.imgur.com/ch4cR75l.jpg)
-![](http://i.imgur.com/QHDitZal.jpg)
 
 ## Testing
 

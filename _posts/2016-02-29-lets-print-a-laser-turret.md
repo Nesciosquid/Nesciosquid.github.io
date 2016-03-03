@@ -1,5 +1,5 @@
 ---
-title: Let's Print a Laser Turret
+title: Let's print a laser turret!
 layout: post
 category: Research
 tags: [3D Printing, Code, Lasers, Hardware, Electronics]
