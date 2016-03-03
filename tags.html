@@ -1,0 +1,10 @@
+---
+layout: page
+title: Posts By Tag
+---
+
+    {% for node in site.archives %}
+    {% if node.type == 'tag' %}
+      <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{node.title}}</a>
+    {% endif %}
+    {% endfor %}

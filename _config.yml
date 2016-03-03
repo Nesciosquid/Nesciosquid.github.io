@@ -36,11 +36,11 @@ paginate:         1
 twitter:
     username: Nesciosquid
 
-gems:             
+gems:      
+- jekyll-archives       
 - jekyll-paginate
 - jekyll-gist
+- jekyll-feed
+- jekyll-redirect-from
 - jekyll-seo-tag
 - jekyll-sitemap
-- jekyll-feed
-- jekyll-archives
-- jekyll-redirect-from

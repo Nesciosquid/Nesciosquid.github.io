@@ -25,34 +25,6 @@
       {% endif %}
     {% endfor %}
     </nav>
-
-
-    <div class="sidebar-item">
-    <p>Posts By Category</p>
-    </div>
-
-    <nav class="sidebar-nav">
-
-    {% for node in site.archives %}
-    {% if node.type == 'category' %}
-      <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{node.title}}</a>
-    {% endif %}
-    {% endfor %}
-  </nav>
-
-      <div class="sidebar-item">
-    <p>Posts By Topic</p>
-    </div>
-
-    <nav class="sidebar-nav">
-
-    {% for node in site.archives %}
-    {% if node.type == 'tag' %}
-      <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{node.title}}</a>
-    {% endif %}
-    {% endfor %}
-  </nav>
-
   <div class="sidebar-item">
     <p>
       &copy; {{ site.time | date: '%Y' }}. All rights reserved.
