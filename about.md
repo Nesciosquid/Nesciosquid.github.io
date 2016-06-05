@@ -11,8 +11,6 @@ I teach a graduate-level Internet of Things course at BU, where our students cre
 
 I grew up in the [Bay Area](https://en.wikipedia.org/wiki/San_Francisco_Bay_Area) and received a BS in Microbiology and a BA in Classical Civilizations from [UC Davis](https://www.ucdavis.edu/) in 2012. My previous work focused on [synthetic biology](http://2011.igem.org/Team:UC_Davis) and tools for [laboratory automation](https://github.com/Nesciosquid/3DuF). 
 
-I'm gay, I'm loud, and I want you to say hello! 
-
 You can contact me by [email](mailto:aaron@heuckroth.com), [Twitter](https://twitter.com/Nesciosquid), or by shouting my name really loud outside the [SLURP Lab](http://www.bu.edu/ece/undergraduate/instructional-laboratories/smart-lighting-undergraduate-research-program-slurp-laboratory/) on the second floor of the [BU Photonics Center](http://www.bu.edu/photonics/). (Please don't actually do that. People will think you're weird.)
 
 ![](http://i.imgur.com/0QcxnNNl.jpg){: .center-image }
