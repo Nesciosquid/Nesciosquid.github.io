@@ -34,6 +34,7 @@ Survey Processing -- Javascript -- March 2016
 Freeforme is a simple web application that allows users to process free-entry CSV data from online surveys. The software supports a workflow which eliminates the effort of re-processing identical responses and makes it easier to group similar responses into categories, allowing for straightforward processing of free-response answers in an organized, efficient fashion.
 
 Demo: [http://www.heuckroth.com/freeforme/](http://www.heuckroth.com/freeforme/)
+
 Source: [https://github.com/Nesciosquid/freeforme](https://github.com/Nesciosquid/freeforme)
 
 ***
@@ -124,6 +125,24 @@ Source: [https://gist.github.com/Nesciosquid/d9c08b1a1a42c65fb8c2](https://gist.
 
 ***
 
+# Accessible Microfluidic Mold Fabrication
+
+Poster -- 3D Printing, Python, OpenSCAD -- March 2015
+
+***
+
+[![](http://i.imgur.com/NLUUXBOl.jpg){: .center-image}](http://cidarlab.org/wp-content/uploads/2015/03/accessible-microfluidics-SynBERC-S2015.pdf)
+
+I created a process which uses FDM printers to fabricate molds for soft-lithography microfluidics by printing plastic directly onto glass slides. I also created a Python library for placing and parameterizing microfluidic components, allowing devices to be designed programmatically and exported as easily-printable 3D models. 
+
+This was the predecessor to [3DuF.](heuckroth.com/portfolio/#3DuF)
+
+This poster was presented at [the SynBERC 2015 Spring Retreat.](https://www.synberc.org/spring-2015-retreat)
+
+Poster: [http://cidarlab.org/wp-content/uploads/2015/03/accessible-microfluidics-SynBERC-S2015.pdf](http://cidarlab.org/wp-content/uploads/2015/03/accessible-microfluidics-SynBERC-S2015.pdf)
+
+***
+
 # Expectations and Identity
 
 Video -- Writing, Animation, Music, etc. -- May 2016
@@ -137,6 +156,8 @@ I created this video to voice some of my concerns over the way sensitive topics,
 I also provide alternate methods of presenting survey questions that are more inclusive and help to avoid discrimination based on gender and other factors.
 
 Video: [https://www.youtube.com/watch?v=LOprm4t7y8M](https://www.youtube.com/watch?v=LOprm4t7y8M)
+
+
 
 ***
 
