@@ -19,7 +19,7 @@ Microfluidics CAD -- Javascript -- May 2015
 
 Demo: [http://heuckroth.com/3DuF](http://heuckroth.com/3DuF)
 
-Source: [https://github.com/nesciosquid/3DuF](https://github.com/nesciosquid/3DuF)
+Source: [https://github.com/Nesciosquid/3DuF/tree/gh-pages](https://github.com/Nesciosquid/3DuF/tree/gh-pages)
 
 ***
 
@@ -35,7 +35,7 @@ Freeforme is a simple web application that allows users to process free-entry CS
 
 Demo: [http://www.heuckroth.com/freeforme/](http://www.heuckroth.com/freeforme/)
 
-Source: [https://github.com/Nesciosquid/freeforme](https://github.com/Nesciosquid/freeforme)
+Source: [https://github.com/Nesciosquid/freeforme/tree/gh-pages](https://github.com/Nesciosquid/freeforme/tree/gh-pages)
 
 ***
 
@@ -124,6 +124,24 @@ Blog Post: [http://www.heuckroth.com/research/2016/02/04/3D-printing-light-senso
 Source: [https://gist.github.com/Nesciosquid/d9c08b1a1a42c65fb8c2](https://gist.github.com/Nesciosquid/d9c08b1a1a42c65fb8c2)
 
 ***
+
+# Networking the Physical World 
+
+Graduate-level IoT Course -- September 2014 to September 2016
+
+***
+
+[![](http://i.imgur.com/8v4nHdl.jpg){: .center-image]}](https://github.com/Nesciosquid/EC544_demos/wiki)
+
+I teach an Internet of Things course (EC544) at Boston University along with [Professor Thomas Little.](http://www.bu.edu/ece/people/faculty/h-n/thomas-little/) In this course, our students create sensor networks, autonomous vehicles, and indoor localization systems from off-the-shelf consumer electronics and open source software. 
+
+I helped the course adopt more accessible hardware and software development practices, which involved re-writing nearly the entire curriculum to use Arduinos, GitHub, Javascript, and Node.js. This allows us to more quickly distribute code to (and analyze code from) our students. 
+
+All of the course materials I developed, including hardware and software setup instructions as well as demonstrations, can be found on GitHub.
+
+GitHub: [https://github.com/Nesciosquid/EC544_demos/](https://github.com/Nesciosquid/EC544_demos/)
+
+*** 
 
 # Accessible Microfluidic Mold Fabrication
 
