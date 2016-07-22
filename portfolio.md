@@ -83,7 +83,7 @@ IoT Simulation -- Javascript -- November 2015
 
 [![](http://i.imgur.com/NmE3yj3l.png){: .center-image }](http://www.heuckroth.com/LeaderElectionSimulator/)
 
-As part of our [Internet of Things course](https://github.com/Nesciosquid/EC544_demos), we ask our students to implement a mesh network of wireless devices which must dynamically form independent groups with other devices which are within connection range, with each group governed by a single, unanimously-elected leader.
+As part of our [Internet of Things course](https://github.com/EC544-BU/EC544_demos/), we ask our students to implement a mesh network of wireless devices which must dynamically form independent groups with other devices which are within connection range, with each group governed by a single, unanimously-elected leader.
 
 This simulation demonstrates the basic concepts of leader election, and provides a visual description of the behavior we expect from their systems.
 
@@ -125,23 +125,23 @@ Source: [https://gist.github.com/Nesciosquid/d9c08b1a1a42c65fb8c2](https://gist.
 
 ***
 
-# Networking the Physical World 
+# Networking the Physical World
 
 Graduate-level IoT Course -- September 2014 to September 2016
 
 ***
 
-[![](http://i.imgur.com/8v4nHdl.jpg){: .center-image]}](https://github.com/Nesciosquid/EC544_demos/wiki)
+[![](http://i.imgur.com/8v4nHdl.jpg){: .center-image]}](https://github.com/EC544-BU/EC544_demos/)
 
-I teach an Internet of Things course (EC544) at Boston University along with [Professor Thomas Little.](http://www.bu.edu/ece/people/faculty/h-n/thomas-little/) In this course, our students create sensor networks, autonomous vehicles, and indoor localization systems from off-the-shelf consumer electronics and open source software. 
+I teach an Internet of Things course (EC544) at Boston University along with [Professor Thomas Little.](http://www.bu.edu/ece/people/faculty/h-n/thomas-little/) In this course, our students create sensor networks, autonomous vehicles, and indoor localization systems from off-the-shelf consumer electronics and open source software.
 
-I helped the course adopt more accessible hardware and software development practices, which involved re-writing nearly the entire curriculum to use Arduinos, GitHub, Javascript, and Node.js. This allows us to more quickly distribute code to (and analyze code from) our students. 
+I helped the course adopt more accessible hardware and software development practices, which involved re-writing nearly the entire curriculum to use Arduinos, GitHub, Javascript, and Node.js. This allows us to more quickly distribute code to (and analyze code from) our students.
 
 All of the course materials I developed, including hardware and software setup instructions as well as demonstrations, can be found on GitHub.
 
-GitHub: [https://github.com/Nesciosquid/EC544_demos/](https://github.com/Nesciosquid/EC544_demos/)
+GitHub: [https://github.com/EC544-BU/EC544_demos/](https://github.com/EC544-BU/EC544_demos/)
 
-*** 
+***
 
 # Accessible Microfluidic Mold Fabrication
 
@@ -151,7 +151,7 @@ Poster -- 3D Printing, Python, OpenSCAD -- March 2015
 
 [![](http://i.imgur.com/NLUUXBOl.jpg){: .center-image}](http://cidarlab.org/wp-content/uploads/2015/03/accessible-microfluidics-SynBERC-S2015.pdf)
 
-I created a process which uses FDM printers to fabricate molds for soft-lithography microfluidics by printing plastic directly onto glass slides. I also created a Python library for placing and parameterizing microfluidic components, allowing devices to be designed programmatically and exported as easily-printable 3D models. 
+I created a process which uses FDM printers to fabricate molds for soft-lithography microfluidics by printing plastic directly onto glass slides. I also created a Python library for placing and parameterizing microfluidic components, allowing devices to be designed programmatically and exported as easily-printable 3D models.
 
 This was the predecessor to [3DuF.](heuckroth.com/portfolio/#3DuF)
 
@@ -189,7 +189,7 @@ Computer Game -- Java, Software Engineering -- April 2014
 
 Final project for MET CS673 (Software Engineering) at Boston University.
 
-A remake of the classic top-down tank-shooter videogame Bolo, built from the ground up in Java. Our team included approximately 10 students, and the focus of the project was on enacting and following solid software engineering procedures, including unit and integration testing, pull requests, and code review. 
+A remake of the classic top-down tank-shooter videogame Bolo, built from the ground up in Java. Our team included approximately 10 students, and the focus of the project was on enacting and following solid software engineering procedures, including unit and integration testing, pull requests, and code review.
 
 I acted as one of the project leaders and created the bulk of the backend game code, as well as all of the art and music assets for the game.
 
