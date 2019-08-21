@@ -3,8 +3,6 @@ layout: page
 title: About Me
 ---
 
-I'm currently a full-stack software engineer at [Giant Otter](https://giantotter.com), where I primarily work with ES6 and React on the frontend, Python and Flask on the backend, and handle our interactions with a wide range of AWS cloud services.
-
 I like to make things like [software](https://github.com/Nesciosquid/), [3D printed devices](http://www.thingiverse.com/Nesciosquid/designs), and [music](https://soundcloud.com/kirrei/).
 
 Before finishing a Master's in Computer Engineering, I taught a graduate-level Internet of Things course at Boston University, where our students create sensor networks, autonomous vehicles, and indoor localization systems from off-the-shelf consumer electronics. [Course materials are available online through GitHub.](https://github.com/Nesciosquid/EC544_demos)
