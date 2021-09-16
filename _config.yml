@@ -4,19 +4,18 @@ permalink:        pretty
 # Setup
 
 author:
-  name: Aaron Heuckroth
-  url:  http://www.heuckroth.com
-  email:  aaron@heuckroth.com
-  twitter: Nesciosquid
+  name: Aran Ink
+  url:  https://nesciosquid.github.io/
+  twitter: nesciosquid
   
-name: heuckroth.com
-title: Aaron Heuckroth
+name: nesciosquid.github.io
+title: Aran P. Ink
 tagline: (Nesciosquid)
 description: Thoughts on code, 3D printing, music, and more.
 baseurl: ""
-url: http://www.heuckroth.com
-twitter_username: Nesciosquid
-github_username: Nesciosquid
+url: https://nesciosquid.github.io
+twitter_username: nesciosquid
+github_username: nesciosquid
 
 jekyll-archives:
   enabled: ['categories', 'tags']
@@ -34,7 +33,7 @@ feed:
 paginate:         1
 
 twitter:
-    username: Nesciosquid
+    username: nesciosquid
 
 gems:      
 - jekyll-archives       
